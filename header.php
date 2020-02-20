@@ -44,17 +44,17 @@
 		?>
 		<body id="<?php echo $child_term; ?>" <?php body_class(); ?>>
 		<!-- MASK RESPONSIVE -->
-		<div id="mask-responsive" class="">
+		<!-- <div id="mask-responsive" class="">
 			<div class="h-100 d-flex flex-column justify-content-center align-items-center">
 				<div class="text-center">
-					<?php include get_template_directory().'/includes/logo-baseline.php'; ?>
+					<?php // include  get_template_directory().'/includes/logo-baseline.php'; ?>
 				</div>	
 				<div class="mt-80 pl-30 pr-30">
 					<h3 class="text-center text-white fs-28 mb-15">Site temporairement indisponible depuis un mobile, connectez-vous avec votre ordinateur.</h3>
 					<h4 class="text-center text-white fs-20">Mobile website temporary unavailable, please come with your computer.</h4>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<!-- wrapper -->
 		<div class="wrapper">
 			<!-- header -->

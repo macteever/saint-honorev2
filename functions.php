@@ -290,7 +290,7 @@ function f711_get_post_content_callback() {
         $ajax_thumbnail = get_the_post_thumbnail($thispost);
         
         
-        echo '<div class="col-xl-4 col-lg-4 col-12 ajax-content p-relative d-flex align-items-end">';
+        echo '<div class="col-xl-4 col-lg-4 col-md-4 col-12 ajax-content p-relative d-flex align-items-end">';
         echo     '<div>';
         echo     '<h3 class="fs-20 fw-600">' . $ajax_title . '</h3>';
         echo     '<h4 class="text-grey fs-20 uppercase">' . $ajax_tag[0]->name . '</h4>';
@@ -298,7 +298,7 @@ function f711_get_post_content_callback() {
         echo         '<div class="text-grey fs-15 mt-20 lh-1-4">' . $thispost->post_content . '</div>';
         echo     '</div>';
         echo '</div>';
-        echo '<div class="col-xl-8 col-lg-8 col-12 ajax-thumbnail p-relative"><div>' . $ajax_thumbnail . '</div></div>';
+        echo '<div class="col-xl-8 col-lg-8 col-md-8 col-12 ajax-thumbnail p-relative"><div>' . $ajax_thumbnail . '</div></div>';
     }
     
 

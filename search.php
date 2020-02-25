@@ -12,7 +12,7 @@
                </div>
             </div>
             <div class="row h-100 align-items-end">
-               <div class="col-xl-6 col-lg-6 col-md-6 col-12 search-top-cube" style="background-color: <?php the_field('cube_color', 'option'); ?>;">
+               <div class="col-xl-6 col-lg-6 col-md-8 col-12 search-top-cube" style="background-color: <?php the_field('cube_color', 'option'); ?>;">
                   <h1 class="text-white fs-32 fw-400 text-right mb-15"><?php echo sprintf( __( '%s Search Results for ', 'html5blank' ), $wp_query->found_posts ); ?><span class="fw-300"><?php echo get_search_query(); ?></span></h1>
                   <div class="fs-18 text-right">
                      Description du contenu

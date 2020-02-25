@@ -14,15 +14,15 @@
       </div>
    </div>
    <div class="video-container">
-      <video autoplay="autoplay" loop="loop" muted>
+      <video autoplay="autoplay" loop="loop" muted playsinline webkit-playsinline>
          <?php
          $video_mp4 = get_field('video_mp4', 'option');
          $video_webm = get_field('video_webm', 'option');
          $video_ogv = get_field('video_ogv', 'option');
          ?> 
-         <source src="<?php echo home_url() . $video_mp4; ?>">
-         <source src="<?php echo home_url() . $video_webm; ?>">
-         <source src="<?php echo home_url() . $video_ogv; ?>">
+         <source src="<?php echo site_url() . $video_mp4; ?>">
+         <source src="<?php echo site_url() . $video_webm; ?>">
+         <source src="<?php echo site_url() . $video_ogv; ?>">
       </video>
    </div>
 </div>

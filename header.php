@@ -14,6 +14,9 @@
 		<title><?php wp_title(''); ?><?php if(wp_title('', false)) // { echo ' :'; }  bloginfo('name'); ?></title>
 		<link href="<?php echo get_template_directory_uri(); ?>/assets/img/icons/favicon.ico" rel="shortcut icon">
 		<link href="<?php echo get_template_directory_uri(); ?>/assets/img/icons/apple-touch-icon.png" rel="apple-touch-icon-precomposed">
+		<link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_template_directory_uri(); ?>/assets/img/icons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_template_directory_uri(); ?>/assets/img/icons/favicon-16x16.png">
+		<link rel="mask-icon" href="<?php echo get_template_directory_uri(); ?>/assets/img/icons/safari-pinned-tab.svg" color="#1e1e1e">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -47,7 +50,7 @@
 		<!-- <div id="mask-responsive" class="">
 			<div class="h-100 d-flex flex-column justify-content-center align-items-center">
 				<div class="text-center">
-					<?php // include  get_template_directory().'/includes/logo-baseline.php'; ?>
+					<?php // include get_template_directory().'/includes/logo-baseline.php'; ?>
 				</div>	
 				<div class="mt-80 pl-30 pr-30">
 					<h3 class="text-center text-white fs-28 mb-15">Site temporairement indisponible depuis un mobile, connectez-vous avec votre ordinateur.</h3>

@@ -18,7 +18,7 @@
 						</div>
 						<div class="row justify-content-between mt-80">
 							<div class="col-auto">
-								<h3 class="fs-16 text-white footer-subtitle-after">Contactez-nous<br><span class="fs-15 text-grey opacity0">test</span></h3>
+								<h3 class="fs-16 text-white footer-subtitle-after"><?php _e('Contactez-nous', 'saint-honore'); ?><br><span class="fs-15 text-grey opacity0">test</span></h3>
 									<div class="mt-30 footer-phone d-flex flex-column">
 										<a class="text-white fs-17 fw-300" href="mailto:<?php the_field('footer_mail', 'option'); ?>?subject=Demande de renseignement"><?php the_field('footer_mail', 'option'); ?></a>
 										<a class="text-white fs-17 fw-300" href="tel:+<?php the_field('footer_phone', 'option'); ?>"><?php the_field('footer_phone', 'option'); ?></a>
@@ -37,14 +37,14 @@
 								<?php endif; ?>
 							</div>
 							<div class="col-auto footer-newsletter">
-								<h3 class="fs-16 text-white footer-subtitle-after">Infolettre<br><span class="fs-15 text-grey">et newsletter</span></h3>
+								<h3 class="fs-16 text-white footer-subtitle-after"><?php _e('Infolettre', 'saint-honore	'); ?><br><span class="fs-15 text-grey">et newsletter</span></h3>
 								<div>
 									<?php echo do_shortcode('[mc4wp_form id="579"]'); ?>
 								</div>
 							</div>
 							<div class="col-auto footer-link-cat d-flex flex-column justify-content-between">
 								<div>
-									<h3 class="fs-16 text-white footer-subtitle-after">Présentoirs<br><span class="fs-15 text-grey">de vitrine</span></h3>
+									<h3 class="fs-16 text-white footer-subtitle-after"><?php _e('Présentoirs', 'saint-honore	'); ?><br><span class="fs-15 text-grey">de vitrine</span></h3>
 									<?php 
 
 											$taxonomyName = "taxonomy-presentoirs";
@@ -67,7 +67,7 @@
 							</div>
 							<div class="col-auto footer-link-cat d-flex flex-column justify-content-between">
 								<div>
-									<h3 class="fs-16 text-white footer-subtitle-after">Mannequins<br><span class="fs-15 text-grey">de vitrine</span></h3>
+									<h3 class="fs-16 text-white footer-subtitle-after"><?php _e('Mannequins', 'saint-honore'); ?><br><span class="fs-15 text-grey"><?php _e('de vitrine', 'saint-honore'); ?></span></h3>
 									<?php 
 
 											// $taxonomyName = "taxonomy-mannequins";
@@ -110,11 +110,11 @@
 			<div class="cookie-notif">
 				<div class="d-flex align-items-center justify-content-between">
 					<div class="bkg-grey pb-20 pt-20 pl-20 pr-20 fs-15">
-						Ce site internet utilise des cookies pour vous assurer une meilleur expérience utilisateur.
+						<?php _e('Ce site internet utilise des cookies pour vous assurer une meilleur expérience utilisateur.', 'saint-honore'); ?>
 					</div>
-					<div class="bkg-white align-items-center justify-content-between d-flex pl-20 fs-15">
-						<button class="anim-300 btn-black mr-30"><a class="text-black fs-14" href="#">En savoir plus</a></button>
-						<button id="cookieButton" class="anim-300 btn-black fs-14">J'accepte</button>
+					<div class="bkg-white align-items-center cookie-notifs-child justify-content-between d-flex pl-20 fs-15">
+						<button class="anim-300 btn-black mr-30"><a class="text-black fs-14" href="#"><?php _e('En savoir plus','saint-honore'); ?></a></button>
+						<button id="cookieButton" class="anim-300 btn-black fs-14"><?php _e('J\'accepte', 'saint-honore'); ?></button>
 					</div>
 				</div>
 			</div>

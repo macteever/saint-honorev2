@@ -52,8 +52,8 @@
                         <?php the_sub_field('content_left'); ?>
                      </div>
                   </div>
-                  <div class="col-xl-6 col-lg-6 col-12 contact-cat-right-parent" style="background-color: <?php the_sub_field('bkg_color_right'); ?>">
-                     <div class="contact-cat-right text-white">
+                  <div class="col-xl-6 col-lg-6 col-12 contact-cat-right-parent" >
+                     <div class="contact-cat-right text-white" style="background-color: <?php the_sub_field('bkg_color_right'); ?>">
                         <?php the_sub_field('content_right'); ?>
                      </div>
                   </div>

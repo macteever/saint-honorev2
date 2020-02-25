@@ -7,7 +7,7 @@ get_header(); ?>
       <section class="container-fluid banner-archive-subcat" style="background-image: url(<?php the_field('banner_subcat', $term); ?>)">
          <div class="container h-100">
             <div class="row h-100 align-items-end">
-               <div class="col-xl-5 col-lg-5 col-md-6 col-12 sub-cat-top-cube" style="background-color: <?php the_field('cube_color', $term); ?>;">
+               <div class="col-xl-5 col-lg-5 col-md-8 col-12 sub-cat-top-cube" style="background-color: <?php the_field('cube_color', $term); ?>;">
                   <h3 class="uppercase fs-16 text-white fw-300 text-right archive-subcat-title-after mb-40">
                      collection
                      <?php 

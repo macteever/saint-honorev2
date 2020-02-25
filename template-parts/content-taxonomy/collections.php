@@ -16,15 +16,15 @@ get_header(); ?>
 
          <?php if ( get_row_layout() == 'video' ) : ?>
             <div class="video-container">
-               <video autoplay="autoplay" loop="loop">
+               <video autoplay="autoplay" loop="loop" muted playsinline webkit-playsinline>
                   <?php
                   $video_webm = get_sub_field('video_webm', $term);
                   $video_mp4 = get_sub_field('video_mp4', $term);
                   $video_ogv = get_sub_field('video_ogv', $term);
                   ?> 
-                  <source src="<?php echo home_url() . $video_mp4; ?>">
-                  <source src="<?php echo home_url() . $video_webm; ?>">
-                  <source src="<?php echo home_url() . $video_ogv; ?>">
+                  <source src="<?php echo site_url() . $video_mp4; ?>">
+                  <source src="<?php echo site_url() . $video_webm; ?>">
+                  <source src="<?php echo site_url() . $video_ogv; ?>">
                </video>
             </div>
          <?php elseif ( get_row_layout() == 'image' ) : ?>

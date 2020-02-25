@@ -1,6 +1,8 @@
 (function ($, root, undefined) {
 	$(document).ready(function(){
 
+   $(function() {
+      if( $(window).width() > 768 ) {	
       // PARALLAX CONTENT
       $(function() {
          // init controller
@@ -42,6 +44,8 @@
 			.addTo(controller);
          });
       });
+      }
+   });
 
    });
 })(jQuery, this);

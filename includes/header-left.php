@@ -25,12 +25,12 @@
           <nav class="d-flex">
              <?php  customTheme_nav(); ?>
              <div id="menu-btn">
-                <button>
+                <!-- <button>
                    <span></span>
                    <span></span>
                    <span></span>
-                </button>
-                <span class="ml-10 fs-13 ">MENU</span>
+                </button> -->
+                <span class="ml-10 fs-15 text-white">MENU</span>
              </div>
           </nav>
           <!-- /nav -->

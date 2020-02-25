@@ -5,6 +5,10 @@
       $(document).ready(function(){
          $(this).scrollTop(0);
      });
+
+   $(function() {
+   if( $(window).width() > 768 ) {	
+      
       // PARALLAX CONTENT
       $(function() {
          // init controller
@@ -102,6 +106,8 @@
       // preloadVideo(video, startScrollAnimation);
 
       // startScrollAnimation();
+      }
+   });  
       
    });
 })(jQuery, this);

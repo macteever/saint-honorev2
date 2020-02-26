@@ -1,6 +1,49 @@
 (function ($, root, undefined) {
 	$(document).ready(function(){
 
+      // PARRALAX VERTICAL 
+
+      $(function() {
+      // init controller
+                  var controller = new ScrollMagic.Controller();
+
+
+      $('.collections-main .row-collections-parent').each(function() {
+            var $this = $(this);
+            var wH = $(window).outerHeight();
+            //var thisImg = $(this).find('.tmplt-collections-media');
+            var thisText = $(this).find('.tmplt-collections-content');
+                  // build a tween
+      var collecContent1 =  new TimelineMax()
+      .fromTo(thisText, 1,  
+      {
+            y: '0%'
+      }, 
+      {
+            y: '-20%'
+      },'first')
+      // .fromTo(thisImg, 1,  
+      // {
+      //       y: '0%'
+      // }, 
+      // {
+      //       y: '15%'
+      // },'first')
+
+      // build scene
+            var sceneCpara1 = new ScrollMagic.Scene({
+                  triggerElement: this, // You can use 'this'
+                  duration: wH*1.5, // Distance duration in px
+                  triggerHook : 0.8 // 'percentage of window'
+            })
+
+            // Create a scene for each project
+            .setTween(collecContent1) // trigger a TweenMax.to tween
+            //.addIndicators({name: "Parllax moving"}) // add indicators (requires plugin)
+            .addTo(controller);
+      });
+      });
+
       // VIDEO SPRITE
      
 

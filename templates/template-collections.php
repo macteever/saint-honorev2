@@ -18,7 +18,7 @@
                <?php while( have_rows('collections') ) : the_row(); ?>
                   <div class="row-collections-parent">
                      <div id="collection-sprite" class="row row-collections align-items-center">
-                        <div class="p-0 col-xl-6 col-lg-6 col-12">
+                        <div class="p-0 col-xl-6 col-lg-6 col-12 tmplt-collections-media">
 
                            <?php if ( have_rows( 'collection_video_img' ) ) : ?>
                               <?php while ( have_rows('collection_video_img' ) ) : the_row(); ?>
@@ -51,23 +51,24 @@
                            <?php endif; ?>
 
                         </div>
-                        <div class="p-0 col-xl-6 col-lg-6 col-12 d-flex flex-column justify-content-between">
+                        <div class="p-0 col-xl-6 col-lg-6 col-12 d-flex flex-column justify-content-between tmplt-collections-content">
                            <div>
                               <h2 class="fs-32 mb-30"><?php the_sub_field('title'); ?></h2>
                               <h3 class="fs-28 text-grey"><?php the_sub_field('subtitle'); ?></h3>
                            </div>
-                           <div class="text-white collections-repeater-content" style="background-color: <?php the_sub_field('bkg_color_content'); ?>">
+                           <div class="text-white collections-repeater-content d-flex flex-column justify-content-between" style="background-color: <?php the_sub_field('bkg_color_content'); ?>">
                               <?php the_sub_field('content'); ?>
-                              <div class="mt-30">
+                              <div class="mb-40">
                                  <?php 
+                                 $id_collection = get_sub_field('id_collection');
                                  $term = get_sub_field('lien_mannequins');
                                  if( $term ): ?>
-                                    <a class="btn-white" href="<?php echo esc_url( get_term_link( $term ) ); ?>">Découvrir</a>
+                                    <a class="btn-white" href="<?php echo esc_url( get_term_link( $term ) ); ?>">Découvrir <?php echo $id_collection; ?></a>
                                  <?php endif; ?>
                                  <?php 
                                  $term = get_sub_field('lien_presentoirs');
                                  if( $term ): ?>
-                                    <a class="btn-white" href="<?php echo esc_url( get_term_link( $term ) ); ?>">Découvrir</a>
+                                    <a class="btn-white" href="<?php echo esc_url( get_term_link( $term ) ); ?>">Découvrir<br> <?php echo $id_collection; ?></a>
                                  <?php endif; ?>
                                  
                               </div>

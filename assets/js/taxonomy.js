@@ -1,7 +1,151 @@
 (function ($, root, undefined) {
 	$(document).ready(function(){
 
-      console.log('Taxonomy script'); 
+      // SCROLL HORIZONTAL 
+      // Set Pin for scroll horizontal
+
+      $(function() {
+         if( $(window).width() > 768 ) {	
+
+            $('#collection ul').css('overflow','hidden');
+            var sceneHeight = $('#collection').outerHeight();
+            
+            // init controller
+            var controller = new ScrollMagic.Controller();
+
+            // build a tween
+   
+            
+            var animateElem = $('#collection ul');
+            var scene = new ScrollMagic.Scene({
+               triggerElement: "#collection",
+               triggerHook : 0,
+               duration: sceneHeight
+            })
+            .on("enter", function () {
+               // trigger animation by changing inline style.
+               $(animateElem).css('overflow', 'auto');
+            })
+            .on("leave", function () {
+               // trigger animation by changing inline style.
+               $(animateElem).css('overflow', 'hidden');
+            })
+            // Create scene
+            .addTo(controller);
+
+            
+            // Pint it
+            var scene = new ScrollMagic.Scene({
+               triggerElement: "#collection",
+               triggerHook : 0,
+               duration: sceneHeight*0.85
+            })
+            
+            // Create scene
+            .setPin("#collection")
+            //.addIndicators({name: "Pin it durin scroll"})
+            .addTo(controller);
+
+            ////// PARALLAX VERTICAL  
+            var triggerRowpair = $('.archive-tax-main:nth-of-type(2n+1)');
+            var wH = $(window).outerHeight();
+            
+            var rowPair = $('.archive-tax-main:nth-of-type(2n) .archive-repeater-content');
+
+            // build a tween
+            var collectionPar1 =  new TimelineMax()
+            .fromTo(rowPair, 1,  
+            {
+               y: -0
+            }, 
+            {
+               y: -300
+            },'first')
+   
+            // build scene
+            var sceneHpara1 = new ScrollMagic.Scene({
+               triggerElement: triggerRowpair, // You can use 'this'
+               duration: wH*2, // Distance duration in px
+               triggerHook : 1 // 'percentage of window'
+            })
+   
+            // Create a scene for each project
+            .setTween(collectionPar1) // trigger a TweenMax.to tween
+            .addTo(controller);
+
+            var rowImpair = $('.archive-tax-main:nth-of-type(2n+1) .archive-repeater-content');
+
+            // build a tween
+            var collectionPar2 =  new TimelineMax()
+            .fromTo(rowImpair, 1,  
+            {
+               y: 0
+            }, 
+            {
+               y: 200
+            },'first')
+   
+            // build scene
+            var sceneHpara1 = new ScrollMagic.Scene({
+               triggerElement: triggerRowpair, // You can use 'this'
+               duration: wH*2, // Distance duration in px
+               triggerHook : 1 // 'percentage of window'
+            })
+   
+            // Create a scene for each project
+            .setTween(collectionPar2) // trigger a TweenMax.to tween
+            //.addIndicators({name: "Parllax moving"}) // add indicators (requires plugin)
+            .addTo(controller);
+
+
+            ////// PARALLAX HORIZONTAL
+            var controller = new ScrollMagic.Controller({vertical: false});
+
+            $('.wrapper-scroll-bloc').each(function() {
+
+               var triggerScrollH = $('.targetscroll-H');
+               var wCollec = $('.wrapper-scroll-bloc').outerWidth();
+               var thisImg = $(this).find('.scroll-section-img');
+               var thisText = $(this).find('.scroll-section-content');
+            
+               // build a tween
+
+               var collecScroll =  new TimelineMax()
+               .fromTo(thisText, 1,  
+               {
+                  x: -80
+               }, 
+               {
+                  x: 80
+               },'first')
+               .fromTo(thisImg, 1,  
+               {
+                  x: 50
+               }, 
+               {
+                  x: -80
+               },'first')
+            
+               // build scene
+               var sceneHpara2 = new ScrollMagic.Scene({
+                  triggerElement: this, // You can use 'this'
+                  duration: wCollec*1.5, // Distance duration in px
+                  triggerHook : 0.25 // 'percentage of window'
+               })
+
+               // Create a scene for each project
+               .setTween(collecScroll) // trigger a TweenMax.to tween
+               //.addIndicators({name: "Parallax horizontal"}) // add indicators (requires plugin)
+               .addTo(controller);
+            });
+            
+         }
+            
+      }); // END RESPONSIVE
+      
+
+      // END SCROLL HORIZONTAL
+
 
  
       $(".collection-product-col").click(function () {

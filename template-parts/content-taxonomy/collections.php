@@ -55,11 +55,9 @@ get_header(); ?>
       <?php endwhile; ?>
    <?php endif; ?>
    <section id="collection" class="wrapper-scroll p-relative">
-      <div class="collection-arrow">
-         <?php include get_template_directory().'/includes/arrow-scroll.php'; ?>
-      </div>
-      <div class="wrapper-scroll-section h-100">
-         <div class="row">
+   
+      <div class="wrapper-scroll-section p-relative h-100">
+         <div class="row p-absolute wrapper-scroll-title w-100">
             <div class="col-xl-6 col-lg-6 col-12 archive-title-after-parent">
                <?php  
                   $term = get_queried_object();
@@ -69,30 +67,32 @@ get_header(); ?>
                </h2>
             </div>
          </div>
-         <div class="d-flex align-items-center">
-            <?php 
-               $term = get_queried_object();
-               $term_id = $term->term_id;
-               $taxonomy_name = $term->taxonomy;
-               
-               $termchildren = get_term_children( $term_id, $taxonomy_name );
-               
-               echo '<ul class="d-flex justify-content-around">';
-               foreach ( $termchildren as $child ) {
-                  $term = get_term_by( 'id', $child, $taxonomy_name );
-                  $thumbnailUrl = get_field('thumbnail_subcat', $term);
+         <?php 
+            $term = get_queried_object();
+            $term_id = $term->term_id;
+            $taxonomy_name = $term->taxonomy;
+            
+            $termchildren = get_term_children( $term_id, $taxonomy_name );
+            
+            echo '<ul class="">';
+            foreach ( $termchildren as $child ) {
+               $term = get_term_by( 'id', $child, $taxonomy_name );
+               $thumbnailUrl = get_field('thumbnail_subcat', $term);
 
-                  echo '<a href="' . get_term_link( $term, $taxonomy_name ) . '">';
-                  echo '<li class="col-auto d-flex align-items-center"><div class="d-flex flex-column scroll-section-content">';
-                  echo '<div><h3 class="fs-28 mb-40">' . $term->name . ' </h3>';
-                  echo '<p class="mb-40">' . $term->description . ' </p></div>';
-                  echo '<div class="scroll-section-content-link"><button class="btn-black">Explorer</button></div></div>';
-                  echo '<img src="' . $thumbnailUrl . '" >';
-                  echo '</li>';
-                  echo '</a>';
-               }
-               echo '</ul>';
-            ?>
+               echo '<a class="wrapper-scroll-bloc p-relative" href="' . get_term_link( $term, $taxonomy_name ) . '">';
+               echo '<li class="col-auto d-flex align-items-center"><div class="d-flex flex-column scroll-section-content">';
+               echo '<div><h3 class="fs-28 mb-40">' . $term->name . ' </h3>';
+               echo '<p class="mb-40">' . $term->description . ' </p></div>';
+               echo '<div class="scroll-section-content-link"><button class="btn-black">Explorer</button></div></div>';
+               echo '<img class="scroll-section-img" src="' . $thumbnailUrl . '" >';
+               echo '</li>';
+               echo '<div class="targetscroll-H"></div>';
+               echo '</a>';
+            }
+            echo '</ul>';
+         ?>
+         <div class="collection-arrow">
+            <?php include get_template_directory().'/includes/arrow-scroll.php'; ?>
          </div>
       </div>
    </section>

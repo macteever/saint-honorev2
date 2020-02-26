@@ -476,6 +476,12 @@ header a{
 	opacity: 0;
 	pointer-events: none;
 } */
+header .wpml-ls-menu-item a{
+	color: rgba(255,255,255,0.5)!important;
+}
+header .wpml-ls-current-language a{
+	color: #FFF!important;
+}
 .header.nav-up .top-header-wpml ul li{
 	padding: 10px 0px 5px;
 }
@@ -1305,6 +1311,7 @@ body.modal-active{
 	padding: 1rem 1em;
 }
 /* PAGE COLLECTION */
+
 .collection-top-title{
 	margin-right: 0px;	
 }
@@ -1317,12 +1324,16 @@ body.modal-active{
 	margin-top: 40px!important;
 	margin-left: auto;
 }
+.row-collections:first-of-type{
+	padding-top: 10vh;
+}
 .row-collections{
 	min-height: 80vh;
-    padding: 20vh 0 10vh;
+   padding: 20vh 0 0vh;
 }
+
 .collections-repeater-content{
-	margin-left: -40px;
+	margin-left: 0px;
 	margin-top: 60px;
 }
 .row-collections-parent:nth-of-type(2n+1) .row-collections .collections-repeater-content{
@@ -1342,7 +1353,22 @@ body.modal-active{
 	height: 100vh!important;
 }
 .collections-repeater-content{
-	padding: 80px;
+	padding-top: 40px;
+	padding-left: 40px;
+	min-height: 500px;
+	width: 380px;
+}
+.row-collections-parent:nth-of-type(2n+1) .collections-repeater-content{
+	margin-left: auto;
+}
+.collections-repeater-content p{
+	max-width: 270px;
+}
+.row-collections-parent:nth-of-type(2n+1) .tmplt-collections-media{
+	transform: translateX(0px);
+}
+.tmplt-collections-media{
+	transform: translateX(40px);
 }
 #collection-sprite #video-scroll{
 	width: 100%;
@@ -1407,12 +1433,54 @@ body.modal-active{
 	margin-bottom: 80px;
 	font-size: 28px;
 }
+
 .wrapper-scroll{
 	overflow-x: scroll;
 	background-color: #fbfbfb;
+	height: 100vh;
 }
-.wrapper-scroll-section{
-	padding: 15vw 0vw 15vw 15vw;
+.wrapper-scroll-title{
+	position: absolute;
+	top: -7vh;
+}
+/* TEST SCROLL HORIZONTAL */
+
+.wrapper-scroll-section ul{
+	/* padding: 25vw 0vw 15vw 15vw; */
+	position: absolute;
+	height: 100vw;
+	width: 100vh;
+	top: 0;
+	margin: 0px!important;
+	left: -100vh;
+	overflow-y: auto;
+	overflow-x: hidden;
+	-webkit-transform: rotate(-90deg);
+	transform-origin: top right;
+}
+.wrapper-scroll-section ul a{
+	display: block;
+	transform: rotate(90deg);
+	margin-top: 40vw;
+}
+.wrapper-scroll-bloc:first-of-type{
+	margin-top: 25vw;
+}
+.wrapper-scroll-section ul li img{
+	margin-left: 30px;
+	width: auto;
+	z-index: 9999;
+	position: relative;
+	/* max-width: 50vw;
+	max-height: 700px;
+	object-fit: cover; */
+}
+
+/* FIN TEST SCROLL HORIZONTAL */
+.targetscroll-H{
+	position: absolute;
+	bottom: 0;
+	left: 0;
 }
 .wrapper-scroll-section ul li{
 	max-width: 100%;
@@ -1430,15 +1498,9 @@ body.modal-active{
 .scroll-section-content-link{
 	margin-left: auto;
 }
-.wrapper-scroll-section ul li img{
-	max-width: 50vw;
-	max-height: 700px;
-	object-fit: cover;
-	margin-left: 30px;
-}
 .archive-title-after-parent{
 	position: absolute;
-	top: 7vw;
+	top: 15vw;
 	left: 0vw;
 }
 .archive-title-after::after{
@@ -1460,7 +1522,7 @@ body.modal-active{
 }
 .collection-arrow{
 	position: absolute;
-    bottom: 5vh;
+    bottom: 0vh;
     left: 50vw;
     transform: rotate(-90deg);
 }
@@ -1649,7 +1711,7 @@ footer {
 	padding: 2em 0px 0em;
 }
 .footer-logo svg{
-	max-width: 240px;
+	width: 220px;
 }
 .footer-subtitle-after::after{
 	content: '';
@@ -1713,9 +1775,7 @@ footer {
 	font-size: 14px;
 	line-height: 1.4;
 }
-.sub-footer{
-	border-top: solid 1px rgba(255,255,255,0.2);
-}
+
 
 /*********** PAGE 404 *************/
 body.error404{
@@ -1753,15 +1813,15 @@ body.error404{
 
 }
 /* 13 POUCES */
-@media only screen and (max-width:1280px) {
-
+@media only screen and (max-width:1200px) {
+	.video-top-container{
+		max-width: 960px;
+	}
 }
 /* 11 POUCES */
 @media only screen and (max-width:1024px) {
 	/* VIDEO INTRO */
-	.video-top-container{
-		max-width: 960px;
-	}
+	
 	/* TMPLT COLLECTIONS */
 	.collections-repeater-content{
 		margin-left: 0px;
@@ -1781,6 +1841,9 @@ body.error404{
 	.search main{
 		padding: 15vh 10vh;
 	}
+	.wrapper-scroll-bloc:first-of-type {
+		margin-top: 45vw;
+  	}
 }
 /* iPad 10,5 POUCES */
 @media only screen and (max-width:992px) {
@@ -1938,6 +2001,14 @@ body.error404{
 	.wrapper-scroll-section ul li img{
 		max-width: 80vw;
 	}
+	.wrapper-scroll-title {
+		position: absolute;
+		top: 0vh;
+		left: 0px;
+	  }
+	  .wrapper-scroll-bloc {
+		margin-bottom: 50vw;
+  	}
 	/* ARCHIVE TAX SUB */
 	.banner-archive-subcat{
 		height: 60vh;

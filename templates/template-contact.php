@@ -23,8 +23,8 @@
                         <div class="contact-repeater-content" style="background-color: <?php the_sub_field('bkg_color_content'); ?>">
                            <?php the_sub_field('content'); ?>
                            <div class="content">
-                              <h3>Envoyez nous un message rapide</h3>
-                              <button id="one" class="anim-300 button-form btn-black">C'est parti !</button>
+                              <h3><?php _e('Envoyez nous un message rapide','saint-honore'); ?></h3>
+                              <button id="one" class="anim-300 button-form btn-black"><?php _e('C\'est parti','saint-honore'); ?> !</button>
                            </div>
                            
                            <!-- <div class="content mt-50">
@@ -69,7 +69,7 @@
       <div class="modal-background">
          <div class="modal">
             <div class="modal-child">
-               <h2 class="mb-15">Envoyez nous un message rapide</h2>
+               <h2 class="mb-15"><?php _e('Envoyez nous un message rapide','saint-honore'); ?></h2>
                <div>
                   <?php echo do_shortcode('[contact-form-7 id="19" title="Formulaire de contact 1"]'); ?>
                </div>
@@ -84,7 +84,7 @@
       <div class="modal-background">
          <div class="modal">
             <div class="modal-child">
-               <h2 class="mb-15">Demander un rappel immédiat</h2>
+               <h2 class="mb-15"><?php _e('Demander un rappel immédiat','saint-honore'); ?></h2>
                <div>
                   <?php echo do_shortcode('[contact-form-7 id="127" title="Form-phone"]'); ?>
                </div>

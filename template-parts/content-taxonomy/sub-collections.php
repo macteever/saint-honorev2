@@ -9,7 +9,7 @@ get_header(); ?>
             <div class="row h-100 align-items-end">
                <div class="col-xl-5 col-lg-5 col-md-8 col-12 sub-cat-top-cube" style="background-color: <?php the_field('cube_color', $term); ?>;">
                   <h3 class="uppercase fs-16 text-white fw-300 text-right archive-subcat-title-after mb-40">
-                     collection
+                     <?php _e('collection','saint-honore'); ?>
                      <?php 
 
                      $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
@@ -26,7 +26,7 @@ get_header(); ?>
                      <?php echo term_description(); ?>
                   </div>
                   <div class="mt-80 ml-auto d-flex justify-content-end">
-                     <a href="<?php echo $collection_link; ?>#collection" class="btn-white">Retour aux collections</a>
+                     <a href="<?php echo $collection_link; ?>#collection" class="btn-white"><?php _e('Retour aux collections','saint-honore'); ?></a>
                   </div>
                </div>
             </div>
@@ -76,7 +76,7 @@ get_header(); ?>
    <div id="modal-container-product">
       <div class="modal-background container-fluid">
          <div class="modal container p-relative">
-            <button class="close-modal btn-black fs-15 anim-300">Fermer</button>
+            <button class="close-modal btn-black fs-15 anim-300"><?php _e('Fermer','saint-honore'); ?></button>
             <div class="modal-child row p-relative">
                
             </div>

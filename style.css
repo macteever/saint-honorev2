@@ -777,6 +777,11 @@ margin-left: auto;
 	width: 100%;
 	height: auto;
 }
+#archive-cat.tax-taxonomy-presentoirs .video-container video{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
 .archive#archive-cat .video-top-content{
 	opacity: 1!important;
 	transform: translateY(0px)!important;
@@ -1826,12 +1831,19 @@ body.error404{
 	.collections-repeater-content{
 		margin-left: 0px;
 	}
+	.row-collections{
+		min-height: auto;
+	}
 	/* ARCHIVE TAX */
 	.sub-cat-top-cube{
 		margin-bottom: -25vh;
 	}
 	.archive-arrow{
 		left: 10px;
+	}
+	.archive-tax-main {
+		min-height: auto;
+		padding: 15vh 0 10vh;
 	}
 	/* CONTACT */
 	#modal-container-form.one .modal-background .modal{
@@ -1953,6 +1965,9 @@ body.error404{
 	}
 	.row-collections-parent:nth-of-type(2n+1) .row-collections .collections-repeater-content{
 		margin-right: 0px;
+	}
+	.collections-repeater-content{
+		width: auto;
 	}
 	/* FOOTER */
 	.footer-link-cat{
@@ -2143,6 +2158,13 @@ body.error404{
 	.collections-repeater-content {
 		padding: 60px 40px;
 	}
+	.tmplt-collections-media {
+		transform: translateX(0px);
+		margin-bottom: 30px;
+	  }
+	.row-collections-parent:nth-of-type(2n+1) .collections-repeater-content {
+		margin-left: 0px;
+  	}
 	/* ABOUT*/
 	.about-main {
 		padding: 10vh 0 5vh;
@@ -2182,18 +2204,44 @@ body.error404{
 		width: auto;
 		height: auto!important;
 	}
-	.wrapper-scroll-section {
-		padding: 35vw 0vw 30vw 0vw;
-	  }
-	  .wrapper-scroll-section ul li img{
-		  max-width: 70vh;
-	}
 	.collection-arrow{
 		bottom: 0vh;
 	}
 	.collection-arrow svg{
 		max-width: 20px;
 	}
+	.wrapper-scroll{
+		height: auto;
+		overflow: auto;
+	}
+	.wrapper-scroll-section{
+		padding: 0px;
+	}
+	.wrapper-scroll-section ul{
+		position: relative;
+		height: auto;
+		width: auto;
+		overflow: auto;
+		transform: rotate(0deg);
+		left: 0;
+		padding-left: 0px;
+	}
+	.wrapper-scroll-bloc:first-of-type{
+		margin-top: 180px;
+	}
+	.wrapper-scroll-section ul li{
+		flex-direction: column;
+	}
+	.wrapper-scroll-section ul a{
+		transform: rotate(0deg);
+	}
+	.wrapper-scroll-bloc{
+		margin-bottom: 40px;
+	}
+	.scroll-section-content > div:first-of-type {
+		width: auto;
+		height: 350px;
+  	}
 	/* ARCHIVE TAX SUB */
 	.sub-cat-top-cube {
 		margin-bottom: -20vh;	

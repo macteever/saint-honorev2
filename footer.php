@@ -37,14 +37,14 @@
 								<?php endif; ?>
 							</div>
 							<div class="col-auto footer-newsletter">
-								<h3 class="fs-16 text-white footer-subtitle-after"><?php _e('Infolettre', 'saint-honore	'); ?><br><span class="fs-15 text-grey">et newsletter</span></h3>
+								<h3 class="fs-16 text-white footer-subtitle-after"><?php _e('Infolettre', 'saint-honore	'); ?><br><span class="fs-15 text-grey"><?php _e('et newsletter', 'saint-honore'); ?></span></h3>
 								<div>
 									<?php echo do_shortcode('[mc4wp_form id="579"]'); ?>
 								</div>
 							</div>
 							<div class="col-auto footer-link-cat d-flex flex-column justify-content-between">
 								<div>
-									<h3 class="fs-16 text-white footer-subtitle-after"><?php _e('Présentoirs', 'saint-honore	'); ?><br><span class="fs-15 text-grey">de vitrine</span></h3>
+									<h3 class="fs-16 text-white footer-subtitle-after"><?php _e('Présentoirs', 'saint-honore	'); ?><br><span class="fs-15 text-grey"><?php _e('de vitrine','saint-honore'); ?></span></h3>
 									<?php 
 
 											$taxonomyName = "taxonomy-presentoirs";
@@ -62,7 +62,7 @@
 									?>
 								</div>
 								<div>
-									<h3 class="fs-16 text-grey footer-subtitle-after lh-1-2"><a class="text-grey" target="_blank" href="<?php echo home_url() . '/mentions-legales'; ?>">Mentions<br>légales</a></h3>
+									<h3 class="fs-16 text-grey footer-subtitle-after lh-1-2"><a class="text-grey" target="_blank" href="<?php echo home_url() . '/mentions-legales'; ?>"><?php _e('Mentions<br>légales','saint-honore'); ?></a></h3>
 								</div>
 							</div>
 							<div class="col-auto footer-link-cat d-flex flex-column justify-content-between">
@@ -85,7 +85,7 @@
 									?>
 								</div>
 								<div>
-									<h3 class="fs-16 text-grey footer-subtitle-after lh-1-2"><a class="text-grey" target="_blank" href="https://www.linkedin.com/company/saint-honor%C3%A9-paris/about/">Rejoindre<br>nos équipes</a></h3>
+									<h3 class="fs-16 text-grey footer-subtitle-after lh-1-2"><a class="text-grey" target="_blank" href="https://www.linkedin.com/company/saint-honor%C3%A9-paris/about/"><?php _e('Rejoindre<br>nos équipes','saint-honore'); ?></a></h3>
 								</div>
 							</div>
 						</div>

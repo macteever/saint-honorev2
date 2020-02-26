@@ -80,11 +80,11 @@ get_header(); ?>
                $thumbnailUrl = get_field('thumbnail_subcat', $term);
 
                echo '<a class="wrapper-scroll-bloc p-relative" href="' . get_term_link( $term, $taxonomy_name ) . '">';
-               echo '<li class="col-auto d-flex align-items-center"><div class="d-flex flex-column scroll-section-content">';
+               echo '<li class="col-auto d-flex align-items-center"><div class="d-flex flex-column scroll-section-content anim-300">';
                echo '<div><h3 class="fs-28 mb-40">' . $term->name . ' </h3>';
                echo '<p class="mb-40">' . $term->description . ' </p></div>';
-               echo '<div class="scroll-section-content-link"><button class="btn-black">Explorer</button></div></div>';
-               echo '<img class="scroll-section-img" src="' . $thumbnailUrl . '" >';
+               echo '<div class="scroll-section-content-link"><button class="btn-black">' . __('Explorer','saint-honore') . '</button></div></div>';
+               echo '<img class="scroll-section-img anim-300" src="' . $thumbnailUrl . '" >';
                echo '</li>';
                echo '<div class="targetscroll-H"></div>';
                echo '</a>';

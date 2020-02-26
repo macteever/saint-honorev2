@@ -7,7 +7,7 @@
             <div class="row search-top-title">
                <div class="col-xl-6 col-lg-6 col-12">
                   <h3 class="uppercase fs-16 fw-300 text-right archive-subcat-title-after mb-40">
-                     Recherche
+                     <?php _e('Recherche','saint-honore'); ?>
                   </h3>
                </div>
             </div>
@@ -15,7 +15,7 @@
                <div class="col-xl-6 col-lg-6 col-md-8 col-12 search-top-cube" style="background-color: <?php the_field('cube_color', 'option'); ?>;">
                   <h1 class="text-white fs-32 fw-400 text-right mb-15"><?php echo sprintf( __( '%s Search Results for ', 'html5blank' ), $wp_query->found_posts ); ?><span class="fw-300"><?php echo get_search_query(); ?></span></h1>
                   <div class="fs-18 text-right">
-                     Description du contenu
+                     <?php _e('Description du contenu','saint-honore'); ?>
                   </div>
                </div>
             </div>
@@ -67,7 +67,7 @@
    <div id="modal-container-product">
       <div class="modal-background container-fluid">
          <div class="modal container p-relative">
-            <button class="close-modal btn-black fs-15 anim-300">Fermer</button>
+            <button class="close-modal btn-black fs-15 anim-300"><?php _e('Fermer','saint-honore'); ?></button>
             <div class="modal-child row p-relative">
                
             </div>

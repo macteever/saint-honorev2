@@ -4,8 +4,9 @@
       // PARRALAX VERTICAL 
 
       $(function() {
+      if( $(window).width() > 760 ) {
       // init controller
-                  var controller = new ScrollMagic.Controller();
+      var controller = new ScrollMagic.Controller();
 
 
       $('.collections-main .row-collections-parent').each(function() {
@@ -41,7 +42,8 @@
             .setTween(collecContent1) // trigger a TweenMax.to tween
             //.addIndicators({name: "Parllax moving"}) // add indicators (requires plugin)
             .addTo(controller);
-      });
+            });
+            };
       });
 
       // VIDEO SPRITE

@@ -215,7 +215,10 @@ function html5blank_header_scripts()
 // Load conditional style
 function ct_conditional_styles()
 {
-
+    if (is_tax( 'taxonomy-presentoirs') || is_tax( 'taxonomy-mannequins' ) || is_search( ) ){
+        wp_register_style('magnifier', get_template_directory_uri() . '/assets/css/magnifier.css', array(), '1.0', 'all');
+        wp_enqueue_style('magnifier'); // Enqueue it!
+    }
 }
 // Load HTML5 Blank styles
 function html5blank_styles()
@@ -250,6 +253,10 @@ function html5blank_conditional_scripts()
     if (is_tax( 'taxonomy-presentoirs') || is_tax( 'taxonomy-mannequins' ) || is_search( ) ){
         wp_register_script('taxonomy-script', get_template_directory_uri() . '/assets/js/taxonomy.js', array('jquery'), false, false); // Custom taxonomy script
         wp_enqueue_script('taxonomy-script'); // Enqueue it!  
+        wp_register_script('magnificent-script', get_template_directory_uri() . '/assets/js/Magnifier.js', array('jquery'), false, false); // Custom magnificent script
+        wp_enqueue_script('magnificent-script'); // Enqueue it!  
+        wp_register_script('event-script', get_template_directory_uri() . '/assets/js/Event.js', array('jquery'), false, false); // Custom event script
+        wp_enqueue_script('event-script'); // Enqueue it!  
         // pass Ajax Url to script.js
 	    wp_localize_script('taxonomy-script', 'ajaxurl', admin_url( 'admin-ajax.php' ) );      
     }
@@ -288,6 +295,7 @@ function f711_get_post_content_callback() {
         //echo $thispost->post_content; //Maybe you want to echo wpautop( $thispost->post_content );
         $ajax_title = get_the_title($thispost);
         $ajax_thumbnail = get_the_post_thumbnail($thispost);
+        $ajax_thumbnail_bkg = get_the_post_thumbnail_url($thispost);
         
         
         echo '<div class="col-xl-4 col-lg-4 col-md-4 col-12 ajax-content p-relative d-flex align-items-end">';
@@ -298,7 +306,9 @@ function f711_get_post_content_callback() {
         echo         '<div class="text-grey fs-15 mt-20 lh-1-4">' . $thispost->post_content . '</div>';
         echo     '</div>';
         echo '</div>';
-        echo '<div class="col-xl-8 col-lg-8 col-md-8 col-12 ajax-thumbnail p-relative"><div>' . $ajax_thumbnail . '</div></div>';
+        echo '<div class="col-xl-8 col-lg-8 col-md-8 col-12 ajax-thumbnail p-relative"><img id="imgZoom" src="' . esc_url($ajax_thumbnail_bkg) . '"><div></div></div>';
+      //  echo '<div id="popup-overlay" onmousemove="zoomIn(event)"></div>';
+        // echo '<div style="background: url(' . esc_url($ajax_thumbnail_bkg) . '); " class="col-xl-8 col-lg-8 col-md-8 col-12 ajax-thumbnail p-relative" up-background-zoom><div></div></div>';
     }
     
 

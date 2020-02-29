@@ -46,7 +46,8 @@
             //.addIndicators({name: "Pin it durin scroll"})
             .addTo(controller);
 
-            ////// PARALLAX VERTICAL  
+            
+
             var triggerRowpair = $('.archive-tax-main:nth-of-type(2n+1)');
             var wH = $(window).outerHeight();
             
@@ -96,7 +97,28 @@
             .setTween(collectionPar2) // trigger a TweenMax.to tween
             //.addIndicators({name: "Parllax moving"}) // add indicators (requires plugin)
             .addTo(controller);
+            
+            ////// PARALLAX VERTICAL  
+            // TOP CUBE SUB CAT
 
+            var wH = $(window).outerHeight();
+            var thisText = $('.sub-cat-top-cube');
+            // build a tween
+            var topCube1 =  TweenMax.fromTo(thisText, 1,  { y: '10%'}, { y: '-10%'},'first')
+   
+            // build scene
+            var sceneHpara1 = new ScrollMagic.Scene({
+               triggerElement: '.banner-archive-subcat', // You can use 'this'
+               duration: wH, // Distance duration in px
+               triggerHook : 0 // 'percentage of window'
+            })
+   
+            // Create a scene for each project
+            .setTween(topCube1) // trigger a TweenMax.to tween
+            // .addIndicators({name: "Parllax vertical top cube"}) // add indicators (requires plugin)
+            .addTo(controller);
+            
+            // END TOP CUBE SUB CAT
 
             ////// PARALLAX HORIZONTAL
             var controller = new ScrollMagic.Controller({vertical: false});
@@ -138,6 +160,7 @@
                //.addIndicators({name: "Parallax horizontal"}) // add indicators (requires plugin)
                .addTo(controller);
             });
+            // END HORIZONTAL PARALLAX
             
          }
             
@@ -147,7 +170,7 @@
       // END SCROLL HORIZONTAL
 
 
- 
+      // AJAX SUB COLLECTION POP UP
       $(".collection-product-col").click(function () {
       var id_post = $(this).attr('id');
       $('.modal-child').empty();
@@ -194,6 +217,23 @@
          
 
       });
+      // ZOOM ANIMATION HOVER
+      // function zoomIn(event) {
+      //    var element = document.getElementById("popup-overlay");
+      //    element.style.display = "inline-block";
+      //    var img = document.getElementById("imgZoom");
+      //    var posX = event.offsetX ? (event.offsetX) : event.pageX - img.offsetLeft;
+      //    var posY = event.offsetY ? (event.offsetY) : event.pageY - img.offsetTop;
+      //    element.style.backgroundPosition=(-posX*2)+"px "+(-posY*4)+"px";
+       
+      //  }
+       
+      //  function zoomOut() {
+      //    var element = document.getElementById("popup-overlay");
+      //    element.style.display = "none";
+      //  }
+      
+      // END ZOOM ANIMATION HOVER
 
 
    });

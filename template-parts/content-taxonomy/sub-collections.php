@@ -22,7 +22,6 @@ get_header(); ?>
                      <?php
                      } elseif (ICL_LANGUAGE_CODE == "en") { ?>
                         <span><?php echo $collection_name; ?> collection</span>
-                        <?php _e('collection','saint-honore'); ?>
                      <?php 
                      }
                      ?>
@@ -66,7 +65,7 @@ get_header(); ?>
                                        <?php echo 'Collection ' . $collection_name; ?>
                                     <?php
                                     } elseif (ICL_LANGUAGE_CODE == "en") { ?>
-                                       <?php echo $collection_name . 'collection'; ?>
+                                       <?php echo $collection_name . ' ' . ' collection'; ?>
                                     <?php 
                                     }
                                     ?>

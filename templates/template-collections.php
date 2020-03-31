@@ -14,28 +14,38 @@
                   
                </div>
             </div>
-            <?php if ( have_rows('collections') ) : ?>
+            <?php  
+               $compt = 0; 
+               if ( have_rows('collections') ) : ?>
                <?php while( have_rows('collections') ) : the_row(); ?>
                   <div class="row-collections-parent">
-                     <div id="collection-sprite" class="row row-collections align-items-center">
+                     <div id="collection-sprite-<?php echo $compt ?>" class="row row-collections align-items-center">
                         <div class="p-0 col-xl-6 col-lg-6 col-md-6 col-12 tmplt-collections-media">
-
-                           <?php if ( have_rows( 'collection_video_img' ) ) : ?>
+                           <?php
+                           if ( have_rows( 'collection_video_img' ) ) : ?>
                               <?php while ( have_rows('collection_video_img' ) ) : the_row(); ?>
 
                                  <?php if ( get_row_layout() == 'video' ) : ?>
                                     
-                                    <video id="video-scroll" class="video-scroll">
+                                    <video id="video-scroll-<?php echo $compt ?>" class="video-scroll">
                                        <?php
                                        $video_webm = get_sub_field('video_webm');
                                        $video_mp4 = get_sub_field('video_mp4');
                                        $video_ogv = get_sub_field('video_ogv');
                                        ?> 
-                                       <source src="<?php echo home_url() . $video_webm; ?>">
-                                       <source src="<?php echo home_url() . $video_mp4; ?>">
-                                       <source src="<?php echo home_url() . $video_ogv; ?>">
+                                       <source src="<?php echo site_url() . $video_webm; ?>">
+                                       <source src="<?php echo site_url() . $video_mp4; ?>">
+                                       <source src="<?php echo site_url() . $video_ogv; ?>">
                                     </video>
-                                    <div id="video-length" class="video-length"></div>
+                                    <div id="video-length-<?php echo $compt ?>" class="video-length"></div>
+                                    <div class="video-thumbnail">
+                                       <?php if ( get_sub_field('video_thumbnail') ) : $image = get_sub_field('video_thumbnail'); ?>
+                                       
+                                          <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>"/>
+                                       
+                                       <?php endif; ?>
+                                       
+                                    </div>
 
                                  <?php elseif( get_row_layout() == 'img' ): ?>  
                                     
@@ -83,7 +93,7 @@
                      </div>
                   </div>
             
-            
+               <?php $compt++; ?>                   
                <?php endwhile; ?>
             <?php endif; ?>
             

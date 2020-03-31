@@ -35,11 +35,26 @@
 									<?php endwhile; ?>
 								
 								<?php endif; ?>
+								<h3 class="fs-16 text-white footer-subtitle-after mt-30"><?php _e('Suivez-nous', 'saint-honore'); ?><br><span class="fs-15 text-grey"><?php _e('sur les réseaux','saint-honore'); ?></span></h3>
+								<div class="footer-social d-flex">
+									<a class="text-white fs-14 fw-300" target="_blank" href="https://www.instagram.com/saint_honore.paris/">Instagram</a>
+									<a class="text-white fs-14 fw-300 ml-15" target="_blank" href="https://www.linkedin.com/company/saint-honor%C3%A9-paris/">Linkedin</a>
+								</div>
 							</div>
 							<div class="col-auto footer-newsletter">
 								<h3 class="fs-16 text-white footer-subtitle-after"><?php _e('Infolettre', 'saint-honore	'); ?><br><span class="fs-15 text-grey"><?php _e('et newsletter', 'saint-honore'); ?></span></h3>
-								<div>
-									<?php echo do_shortcode('[mc4wp_form id="579"]'); ?>
+								<div class="footer-modul-mc">
+								<?php
+									if (ICL_LANGUAGE_CODE == "fr") {
+										//show the form in French
+										echo do_shortcode('[mc4wp_form id="579"]');
+										
+									} elseif (ICL_LANGUAGE_CODE == "en") {
+										//show the form in English
+										
+										echo do_shortcode('[mc4wp_form id="1210"]');
+									}
+								?>
 								</div>
 							</div>
 							<div class="col-auto footer-link-cat d-flex flex-column justify-content-between">
@@ -47,30 +62,7 @@
 									<h3 class="fs-16 text-white footer-subtitle-after"><?php _e('Présentoirs', 'saint-honore	'); ?><br><span class="fs-15 text-grey"><?php _e('de vitrine','saint-honore'); ?></span></h3>
 									<?php 
 
-											$taxonomyName = "taxonomy-presentoirs";
-											//This gets top layer terms only.  This is done by setting parent to 0.  
-											$parent_terms = get_terms( $taxonomyName, array( 'parent' => 0, 'orderby' => 'slug', 'hide_empty' => false ) );   
-											echo '<ul>';
-											foreach ( $parent_terms as $pterm ) {
-												//Get the Child terms
-												$terms = get_terms( $taxonomyName, array( 'parent' => $pterm->term_id, 'orderby' => 'slug', 'hide_empty' => false ) );
-												foreach ( $terms as $term ) {
-													echo '<li><a class="text-grey fs-15" href="' . get_term_link( $term ) . '">' . $term->name . '</a></li>';   
-												}
-											}
-											echo '</ul>';
-									?>
-								</div>
-								<div>
-									<h3 class="fs-16 text-grey footer-subtitle-after lh-1-2"><a class="text-grey" target="_blank" href="<?php echo home_url() . '/mentions-legales'; ?>"><?php _e('Mentions<br>légales','saint-honore'); ?></a></h3>
-								</div>
-							</div>
-							<div class="col-auto footer-link-cat d-flex flex-column justify-content-between">
-								<div>
-									<h3 class="fs-16 text-white footer-subtitle-after"><?php _e('Mannequins', 'saint-honore'); ?><br><span class="fs-15 text-grey"><?php _e('de vitrine', 'saint-honore'); ?></span></h3>
-									<?php 
-
-											// $taxonomyName = "taxonomy-mannequins";
+											// $taxonomyName = "taxonomy-presentoirs";
 											// //This gets top layer terms only.  This is done by setting parent to 0.  
 											// $parent_terms = get_terms( $taxonomyName, array( 'parent' => 0, 'orderby' => 'slug', 'hide_empty' => false ) );   
 											// echo '<ul>';
@@ -83,9 +75,47 @@
 											// }
 											// echo '</ul>';
 									?>
+									<?php
+										if ( have_rows('presentoirs_search_link', 'option') ) : ?>
+											<ul>
+												<?php while( have_rows('presentoirs_search_link', 'option') ) : the_row(); ?>
+													
+													<?php if ( get_sub_field('link', 'option') ) : $file = get_sub_field('link', 'option'); ?>
+
+														<li><a class="text-grey fs-15" href="<?php echo $file['url']; ?>"><?php echo $file['title']; ?></a></li>
+
+													<?php endif; ?>
+											
+												<?php endwhile; ?>
+											</ul>
+										<?php endif;
+									?>
 								</div>
 								<div>
-									<h3 class="fs-16 text-grey footer-subtitle-after lh-1-2"><a class="text-grey" target="_blank" href="https://www.linkedin.com/company/saint-honor%C3%A9-paris/about/"><?php _e('Rejoindre<br>nos équipes','saint-honore'); ?></a></h3>
+									<h3 class="fs-16 text-grey footer-subtitle-after lh-1-2"><a class="text-grey" target="_blank" href="<?php echo home_url() . '/mentions-legales'; ?>"><?php _e('Mentions<br>légales','saint-honore'); ?></a></h3>
+								</div>
+							</div>
+							<div class="col-auto footer-link-cat d-flex flex-column justify-content-between">
+								<div>
+									<h3 class="fs-16 text-white footer-subtitle-after"><?php _e('Mannequins', 'saint-honore'); ?><br><span class="fs-15 text-grey"><?php _e('de vitrine', 'saint-honore'); ?></span></h3>
+									<?php
+										if ( have_rows('mannequins_search_link', 'option') ) : ?>
+											<ul>
+												<?php while( have_rows('mannequins_search_link', 'option') ) : the_row(); ?>
+													
+													<?php if ( get_sub_field('link', 'option') ) : $file = get_sub_field('link', 'option'); ?>
+
+														<li><a class="text-grey fs-15" href="<?php echo $file['url']; ?>"><?php echo $file['title']; ?></a></li>
+
+													<?php endif; ?>
+											
+												<?php endwhile; ?>
+											</ul>
+										<?php endif;
+									?>
+								</div>
+								<div>
+									<h3 class="fs-16 text-grey footer-subtitle-after lh-1-2"><a class="text-grey" target="_blank" href="https://www.indeedjobs.com/saint-honor%C3%A9/_hl/fr_FR?cpref=JXWAtnzf3XW5aRnY2g_zoikN87qYWwuQnenmquajQ6g"><?php _e('Rejoindre<br>nos équipes','saint-honore'); ?></a></h3>
 								</div>
 							</div>
 						</div>

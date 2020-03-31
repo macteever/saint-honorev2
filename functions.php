@@ -302,7 +302,7 @@ function f711_get_post_content_callback() {
         echo     '<div>';
         echo     '<h3 class="fs-20 fw-600">' . $ajax_title . '</h3>';
         echo     '<h4 class="text-grey fs-20 uppercase">' . $ajax_tag[0]->name . '</h4>';
-        echo     '<h4 class="text-grey fs-15 d-flex"> Collection ' . $ajax_term[0]->slug . '</h4>';
+        echo     '<h4 class="text-grey fs-15 d-flex"> Collection ' . $ajax_term[0]->name . '</h4>';
         echo         '<div class="text-grey fs-15 mt-20 lh-1-4">' . $thispost->post_content . '</div>';
         echo     '</div>';
         echo '</div>';
@@ -660,6 +660,7 @@ function create_post_type_html5()
             'hierarchical' => true,
             'public' => true,
             'has_archive' => true,
+            'rewrite'      => array('slug' => 'presentoirs-de-vitrine', 'with_front' => false)
         )
     );
     // register_taxonomy_for_object_type('category', 'html5-blank'); // Register Taxonomies for Category
@@ -716,6 +717,7 @@ function create_post_type_html5()
             'hierarchical' => true,
             'public' => true,
             'has_archive' => true,
+            'rewrite'      => array('slug' => 'mannequins-de-vitrine', 'with_front' => false)
         )
     );
 }

@@ -5,7 +5,7 @@
       // Set Pin for scroll horizontal
 
       $(function() {
-         if( $(window).width() > 768 ) {	
+         if( $(window).width() > 1024 ) {	
 
             $('#collection ul').css('overflow','hidden');
             var sceneHeight = $('#collection').outerHeight();
@@ -163,7 +163,6 @@
             // END HORIZONTAL PARALLAX
             
          }
-            
       }); // END RESPONSIVE
       
 
@@ -176,8 +175,8 @@
       $('.modal-child').empty();
       $.ajax({
             type: 'POST',
-            //url: 'https://saint-honore.paris/wp-admin/admin-ajax.php',
-            url: 'http://localhost/saint-honorev2/wp-admin/admin-ajax.php',
+            url: 'https://saint-honore.paris/wp-admin/admin-ajax.php',
+            // url: 'http://localhost/saint-honorev2/wp-admin/admin-ajax.php',
             data: {
                'post_id': id_post,
                'action': 'f711_get_post_content' //this is the name of the AJAX method called in WordPress
@@ -186,8 +185,9 @@
                $('.modal-child').append(result);
                $('.ajax-thumbnail').zoom({
                   //on: 'click',
-                  magnify: 1.25,
-                  duration: 300
+                  magnify: 1.15,
+                  duration: 300,
+                  touch: true
                });
                
                //return false;

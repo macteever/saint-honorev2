@@ -27,6 +27,7 @@
                <?php 
                $compt = 0;
                if (have_posts()) : while (have_posts()) : the_post(); ?>
+
                   <?php if (($compt < 4)) { ?>
                      <div id="<?php the_ID(); ?> one" class="col-xl-4 col-lg-4 col-md-6 col-12 collection-product-col">                   
                         <article <?php post_class('post d-flex flex-column h-100'); ?>>
@@ -40,6 +41,23 @@
                                     if ( $post_tags ) {
                                        echo $post_tags[0]->name; 
                                     }
+                                    ?>
+                                 </h4>
+                                 <h4 class="text-grey fs-15 d-flex">
+                                    <?php 
+                                       $post_id = intval($_POST['post_id'] );
+                                       // get the post
+                                       $thispost = get_post( $post_id );
+                                       //get term 
+                                       $ajax_term = get_the_terms($post_id, 'taxonomy-presentoirs');
+                                    
+                                       if (ICL_LANGUAGE_CODE == "fr") { ?>
+                                          <?php echo 'Collection ' . $ajax_term[0]->name; ?>
+                                       <?php
+                                       } elseif (ICL_LANGUAGE_CODE == "en") { ?>
+                                          <?php echo $ajax_term[0]->name . ' ' . ' collection'; ?>
+                                       <?php 
+                                       }
                                     ?>
                                  </h4>
                               </div>  
@@ -82,6 +100,23 @@
                                     if ( $post_tags ) {
                                        echo $post_tags[0]->name; 
                                     }
+                                    ?>
+                                 </h4>
+                                 <h4 class="text-grey fs-15 d-flex">
+                                    <?php 
+                                       $post_id = intval($_POST['post_id'] );
+                                       // get the post
+                                       $thispost = get_post( $post_id );
+                                       //get term 
+                                       $ajax_term = get_the_terms($post_id, 'taxonomy-presentoirs');
+                                     
+                                       if (ICL_LANGUAGE_CODE == "fr") { ?>
+                                          <?php echo 'Collection ' . $ajax_term[0]->name; ?>
+                                       <?php
+                                       } elseif (ICL_LANGUAGE_CODE == "en") { ?>
+                                          <?php echo $ajax_term[0]->name . ' ' . ' collection'; ?>
+                                       <?php 
+                                       }
                                     ?>
                                  </h4>
                               </div>  

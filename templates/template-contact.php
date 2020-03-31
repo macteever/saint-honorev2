@@ -69,7 +69,7 @@
       <div class="modal-background">
          <div class="modal">
             <div class="modal-child">
-               <h2 class="mb-15"><?php _e('Envoyez nous un <br>message rapide','saint-honore'); ?></h2>
+               <h2 class="mb-15 text-left lh-1-4"><?php _e('Envoyez nous un message<br>rapide','saint-honore'); ?></h2>
                <div>
                   <?php echo do_shortcode('[contact-form-7 id="19" title="Formulaire de contact 1"]'); ?>
                </div>

@@ -29,7 +29,7 @@ get_header(); ?>
             </div>
          <?php elseif ( get_row_layout() == 'image' ) : ?>
             <div class="archive-img-container" >
-               <div class="archive-top-img" style="background-image: url(<?php the_sub_field('img'); ?>);">
+               <div class="archive-top-img" style="background-image: url(<?php the_sub_field('img'); ?>); background-size: cover;">
                </div>
             </div>
          <?php endif; ?>
@@ -41,7 +41,7 @@ get_header(); ?>
    <?php $term = get_queried_object(); ?>
    <?php if ( have_rows('repeater_archive', $term) ) : ?>
       <?php while( have_rows('repeater_archive', $term) ) : the_row(); ?>
-         <section class="container-fluid archive-tax-main" style="background-image: url(<?php the_sub_field('bkg_img', $term); ?> );">
+         <section class="container-fluid archive-tax-main" style="background-image: url(<?php the_sub_field('bkg_img', $term); ?> ); background-size: cover;">
             <div class="container h-100">
                <div class="row archive-repeater-row">
                   <div class="col-xl-6 col-lg-6 col-12 p-0 d-flex flex-column archive-repeater-content">
@@ -92,7 +92,7 @@ get_header(); ?>
                $cubeColor = get_field('cube_color', $term);
 
                echo '<a class="wrapper-scroll-bloc p-relative" href="' . get_term_link( $term, $taxonomy_name ) . '">';
-               echo '<li class="col-auto d-flex align-items-center"><div class="d-flex flex-column scroll-section-content anim-300">';
+               echo '<li class="col-xl-auto col-lg-6 col-12 d-flex align-items-center"><div class="d-flex flex-column scroll-section-content anim-300">';
                echo '<div style="background-color: ' . $cubeColor . ';"><h3 class="fs-28 mb-40">' . $term->name . ' </h3>';
                echo '<p class="mb-40">' . $term->description . ' </p></div>';
                echo '<div class="scroll-section-content-link"><button class="btn-black">' . __('Explorer','saint-honore') . '</button></div></div>';
@@ -104,7 +104,7 @@ get_header(); ?>
             echo '</ul>';
          ?>
          <div class="collection-arrow">
-            <?php include get_template_directory().'/includes/arrow-scroll.php'; ?>
+            <?php // include get_template_directory().'/includes/arrow-scroll.php'; ?>
          </div>
       </div>
    </section>

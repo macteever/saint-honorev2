@@ -10,6 +10,7 @@
 
 		  gtag('config', 'UA-158278422-1');
 		</script>
+		<script data-ad-client="ca-pub-6414740540134747" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		<meta charset="<?php bloginfo('charset'); ?>">
 		<title><?php wp_title(''); ?><?php if(wp_title('', false)) // { echo ' :'; }  bloginfo('name'); ?></title>
 		<link href="<?php echo get_template_directory_uri(); ?>/assets/img/icons/favicon.ico" rel="shortcut icon">
@@ -33,7 +34,6 @@
 					tests: {}
 				});
 		</script>
-		
 		</head>
 		<?php
 		$term = get_queried_object();

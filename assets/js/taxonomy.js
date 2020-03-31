@@ -176,13 +176,20 @@
       $('.modal-child').empty();
       $.ajax({
             type: 'POST',
-            url: 'https://saint-honore.paris/wp-admin/admin-ajax.php',
+            //url: 'https://saint-honore.paris/wp-admin/admin-ajax.php',
+            url: 'http://localhost/saint-honorev2/wp-admin/admin-ajax.php',
             data: {
                'post_id': id_post,
                'action': 'f711_get_post_content' //this is the name of the AJAX method called in WordPress
             }, success: function (result) {
                
                $('.modal-child').append(result);
+               $('.ajax-thumbnail').zoom({
+                  //on: 'click',
+                  magnify: 1.25,
+                  duration: 300
+               });
+               
                //return false;
             },
             error: function () {
@@ -218,20 +225,7 @@
 
       });
       // ZOOM ANIMATION HOVER
-      // function zoomIn(event) {
-      //    var element = document.getElementById("popup-overlay");
-      //    element.style.display = "inline-block";
-      //    var img = document.getElementById("imgZoom");
-      //    var posX = event.offsetX ? (event.offsetX) : event.pageX - img.offsetLeft;
-      //    var posY = event.offsetY ? (event.offsetY) : event.pageY - img.offsetTop;
-      //    element.style.backgroundPosition=(-posX*2)+"px "+(-posY*4)+"px";
-       
-      //  }
-       
-      //  function zoomOut() {
-      //    var element = document.getElementById("popup-overlay");
-      //    element.style.display = "none";
-      //  }
+      
       
       // END ZOOM ANIMATION HOVER
 

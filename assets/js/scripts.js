@@ -1,9 +1,6 @@
 (function ($, root, undefined) {
 	$(document).ready(function(){
 
-	// DETECT BROWSER 
-
-
 	// LOADER
 	$(".page-loader").delay(3500).fadeOut(500);
 

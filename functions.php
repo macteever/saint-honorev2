@@ -154,8 +154,7 @@ function theme_styles(){
 // add_action( 'wp_enqueue_scripts', 'replace_core_jquery_version' );
 
 function custom_scripts(){
-    if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
-        
+    if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) { 
         wp_enqueue_script('cookie', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js', ['jquery'], true);
         
         wp_enqueue_script('tweenmax', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js', ['jquery'], '1.0.0', true);
@@ -215,10 +214,10 @@ function html5blank_header_scripts()
 // Load conditional style
 function ct_conditional_styles()
 {
-    if (is_tax( 'taxonomy-presentoirs') || is_tax( 'taxonomy-mannequins' ) || is_search( ) ){
-        wp_register_style('magnifier', get_template_directory_uri() . '/assets/css/magnifier.css', array(), '1.0', 'all');
-        wp_enqueue_style('magnifier'); // Enqueue it!
-    }
+    // if (is_tax( 'taxonomy-presentoirs') || is_tax( 'taxonomy-mannequins' ) || is_search( ) ){
+    //     wp_register_style('magnifier', get_template_directory_uri() . '/assets/css/magnifier.css', array(), '1.0', 'all');
+    //     wp_enqueue_style('magnifier'); // Enqueue it!
+    // }
 }
 // Load HTML5 Blank styles
 function html5blank_styles()
@@ -251,12 +250,12 @@ function html5blank_conditional_scripts()
         wp_enqueue_script('collections-script'); // Enqueue it!        
     }
     if (is_tax( 'taxonomy-presentoirs') || is_tax( 'taxonomy-mannequins' ) || is_search( ) ){
+        wp_register_script('zoom', get_template_directory_uri() . '/assets/js/jquery.zoom.min.js', array('jquery'), true, true); // Custom magnificent script
+        wp_enqueue_script('zoom'); // Enqueue it!  
+
         wp_register_script('taxonomy-script', get_template_directory_uri() . '/assets/js/taxonomy.js', array('jquery'), false, false); // Custom taxonomy script
         wp_enqueue_script('taxonomy-script'); // Enqueue it!  
-        wp_register_script('magnificent-script', get_template_directory_uri() . '/assets/js/Magnifier.js', array('jquery'), false, false); // Custom magnificent script
-        wp_enqueue_script('magnificent-script'); // Enqueue it!  
-        wp_register_script('event-script', get_template_directory_uri() . '/assets/js/Event.js', array('jquery'), false, false); // Custom event script
-        wp_enqueue_script('event-script'); // Enqueue it!  
+
         // pass Ajax Url to script.js
 	    wp_localize_script('taxonomy-script', 'ajaxurl', admin_url( 'admin-ajax.php' ) );      
     }
@@ -295,7 +294,8 @@ function f711_get_post_content_callback() {
         //echo $thispost->post_content; //Maybe you want to echo wpautop( $thispost->post_content );
         $ajax_title = get_the_title($thispost);
         $ajax_thumbnail = get_the_post_thumbnail($thispost);
-        $ajax_thumbnail_bkg = get_the_post_thumbnail_url($thispost);
+        $ajax_thumbnail_bkg = get_the_post_thumbnail_url($thispost, 'large');
+        $ajax_thumbnail_bkg_full = get_the_post_thumbnail_url($thispost, 'full');
         
         
         echo '<div class="col-xl-4 col-lg-4 col-md-4 col-12 ajax-content p-relative d-flex align-items-end">';
@@ -306,9 +306,9 @@ function f711_get_post_content_callback() {
         echo         '<div class="text-grey fs-15 mt-20 lh-1-4">' . $thispost->post_content . '</div>';
         echo     '</div>';
         echo '</div>';
-        echo '<div class="col-xl-8 col-lg-8 col-md-8 col-12 ajax-thumbnail p-relative"><img id="imgZoom" src="' . esc_url($ajax_thumbnail_bkg) . '"><div></div></div>';
-      //  echo '<div id="popup-overlay" onmousemove="zoomIn(event)"></div>';
-        // echo '<div style="background: url(' . esc_url($ajax_thumbnail_bkg) . '); " class="col-xl-8 col-lg-8 col-md-8 col-12 ajax-thumbnail p-relative" up-background-zoom><div></div></div>';
+        echo '<div class="col-xl-7 col-lg-7 col-md-7 col-12 ajax-thumbnail p-relative"><img id="thumb" src="' . esc_url($ajax_thumbnail_bkg_full) . '">';
+        echo '<div class="icon-zoom"><i class="material-icons fs-24 text-grey">zoom_in</i></div>';
+        echo '</div>';
     }
     
 

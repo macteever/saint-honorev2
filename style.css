@@ -198,6 +198,8 @@ strong{
 	background-color: #FFF!important;
 	color: black!important;
 }
+
+
 .text-black{color: #1F1E1E;}
 .text-white{color: #FFF;}
 .text-grey{color: #757575!important;}
@@ -890,6 +892,10 @@ margin-left: auto;
 	min-width: 350px;
 }
 /* HOME */
+.home-img-sprite-link{
+	position: absolute;
+	bottom: 40px;
+}
 .home main, .home, .archive#archive-cat main, .archive#archive-cat{
 	z-index: 9999;
 	position: relative;
@@ -1025,6 +1031,11 @@ body.menu-fixed .home-repeaterA:first-of-type .home-repeater-content{
 	display: block;
 	height: 100%;
 	width: 100%;
+	z-index: 99;
+}
+#home-img-sprite:hover .home-img-sprite-link span{
+	background-color: #FFF;
+	color: #1F1E1E;
 }
 /*** chiffres clés ***/
 ul.home-liste-chiffres{
@@ -1316,6 +1327,52 @@ body.modal-active{
 	padding: 1rem 1em;
 }
 /* PAGE COLLECTION */
+.btn-tmplt-collections{
+	background: none;
+	border: solid 1px #FFF;
+	color: #FFF;
+	display: inline-block;
+	width: auto;
+	font-size: 14px;
+	padding: 0.4em 0.8em;
+}
+
+div.btn-tmplt-collections a{
+	z-index: 99;
+	display: inline-block;
+	color: #FFF;
+	width: 100%;
+	line-height: 1.4;
+}
+div.btn-tmplt-collections:hover a{
+	color: #1F1E1E!important;
+}
+div.btn-tmplt-collections:hover .btn-after-block{
+	width: 100%;
+}
+.btn-tmplt-collections{
+	width: 100%;
+	max-width: 270px;
+	cursor: pointer;
+}
+.btn-after-block{
+	height: 100%;
+	width: 80px;
+	background-color: #FFF;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 1;
+}
+.row-collections-parent:nth-of-type(2n+1) .btn-after-block{
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1;
+}
+.row-collections-parent:nth-of-type(2n+1) .btn-tmplt-collections a{
+	text-align: right;
+}
 
 .collection-top-title{
 	margin-right: 0px;	
@@ -1446,7 +1503,7 @@ body.modal-active{
 }
 .wrapper-scroll-title{
 	position: absolute;
-	top: -7vh;
+	top: 0vh;
 }
 /* TEST SCROLL HORIZONTAL */
 
@@ -1505,7 +1562,7 @@ body.modal-active{
 }
 .archive-title-after-parent{
 	position: absolute;
-	top: 15vw;
+	top: 8vw;
 	left: 0vw;
 }
 .archive-title-after::after{
@@ -1639,6 +1696,8 @@ body.modal-active{
 }
 #modal-container-product .modal .ajax-thumbnail img{
 	height: 100%;
+	position: absolute;
+	left: 0px;
 }
 #modal-container-product .close-modal{
 	position: absolute;
@@ -1646,11 +1705,19 @@ body.modal-active{
 	right: 50px;
 	top: 50px;
 }
-
+.icon-zoom{
+	position: absolute;
+	bottom: 30px;
+	right: 30px;
+}
+.ajax-thumbnail img[role="presentation"]{
+	background-color: rgba(255,255,255,0.8);
+	cursor: crosshair;;
+}
 /* SEARCH */
 .search main{
 	background-color: #f5f5f5;
-	padding: 10vh;
+	padding: 18vh 10vh;
 }
 .search-top-title{
 	margin-top: 5vh;
@@ -1664,6 +1731,19 @@ body.modal-active{
 .search-top-cube{
 	padding: 80px 40px 80px 80px;
 }
+.tmplt-search .col-search-infos article{
+	max-width: 90%;
+	margin-right: auto;
+}
+.col-search-infos article{
+	background-color: #1F1E1E;
+	margin: 60px 0px 0px;
+	padding: 80px 40px 20px 20px;
+	height: 500px;
+}
+/* .tmplt-search .searching-row{
+	margin-top: -8vh;
+} */
 /* FORM */
 input, select{
 	background: rgba(255,255,255,0.19);
@@ -1966,6 +2046,7 @@ body.error404{
 	}
 	.row-collections-parent:nth-of-type(2n+1) .row-collections .collections-repeater-content{
 		margin-right: 0px;
+		padding-right: 40px;
 	}
 	.collections-repeater-content{
 		width: auto;
@@ -2165,7 +2246,10 @@ body.error404{
 	  }
 	.row-collections-parent:nth-of-type(2n+1) .collections-repeater-content {
 		margin-left: 0px;
-  	}
+	  }
+	  .collections-repeater-content .mb-40{
+		  margin-bottom: 0px!important;
+	  }
 	/* ABOUT*/
 	.about-main {
 		padding: 10vh 0 5vh;
@@ -2217,12 +2301,14 @@ body.error404{
 	}
 	.wrapper-scroll-section{
 		padding: 0px;
+		overflow: hidden;
 	}
+	
 	.wrapper-scroll-section ul{
 		position: relative;
 		height: auto;
 		width: auto;
-		overflow: auto;
+		overflow: hidden;
 		transform: rotate(0deg);
 		left: 0;
 		padding-left: 0px;
@@ -2233,6 +2319,11 @@ body.error404{
 	.wrapper-scroll-section ul li{
 		flex-direction: column;
 	}
+	.wrapper-scroll-section ul li img {
+		max-width: 240vw;
+		margin-left: auto;
+		margin-top: -25vh;
+ 	 }
 	.wrapper-scroll-section ul a{
 		transform: rotate(0deg);
 	}

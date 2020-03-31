@@ -62,9 +62,20 @@ get_header(); ?>
                <?php  
                   $term = get_queried_object();
                ?>
-               <h2 class="fs-16 fw-300 uppercase archive-title-after text-right">
-                  Collection <?php echo $term->name; ?>
-               </h2>
+               <?php
+               if (ICL_LANGUAGE_CODE == "fr") { ?>
+                  <h2 class="fs-16 fw-300 uppercase archive-title-after text-right">
+                     Collection <?php echo $term->name; ?>
+                  </h2>
+               <?php
+               } elseif (ICL_LANGUAGE_CODE == "en") { ?>
+                  <h2 class="fs-16 fw-300 uppercase archive-title-after text-right">
+                     <?php echo $term->name; ?> collection
+                  </h2>
+               <?php 
+               }
+               ?>
+               
             </div>
          </div>
          <?php 

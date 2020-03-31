@@ -63,12 +63,18 @@
                                  $id_collection = get_sub_field('id_collection');
                                  $term = get_sub_field('lien_mannequins');
                                  if( $term ): ?>
-                                    <a class="btn-white" href="<?php echo esc_url( get_term_link( $term ) ); ?>"><?php _e('Découvrir','saint-honore'); ?> <?php echo $id_collection; ?></a>
+                                 <div class="btn-tmplt-collections d-flex anim-300 p-relative">
+                                    <a href="<?php echo esc_url( get_term_link( $term ) ); ?>"><?php _e('Découvrir','saint-honore'); ?> <?php echo $id_collection; ?></a>
+                                    <div class="btn-after-block anim-300"></div>
+                                 </div>
                                  <?php endif; ?>
                                  <?php 
                                  $term = get_sub_field('lien_presentoirs');
                                  if( $term ): ?>
-                                    <a class="btn-white" href="<?php echo esc_url( get_term_link( $term ) ); ?>"><?php _e('Découvrir','saint-honore'); ?><br> <?php echo $id_collection; ?></a>
+                                 <div class="btn-tmplt-collections d-flex anim-300 p-relative">
+                                    <a href="<?php echo esc_url( get_term_link( $term ) ); ?>"><?php _e('Découvrir','saint-honore'); ?><br> <?php echo $id_collection; ?></a>
+                                    <div class="btn-after-block anim-300"></div>
+                                 </div>
                                  <?php endif; ?>
                                  
                               </div>

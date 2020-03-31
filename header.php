@@ -33,6 +33,7 @@
 					tests: {}
 				});
 		</script>
+		
 		</head>
 		<?php
 		$term = get_queried_object();

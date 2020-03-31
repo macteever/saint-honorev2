@@ -177,7 +177,7 @@
                     <div id="video-length"></div>
                   </div>
                 </div>
-                </div>
+              </div>
             </section>
             <?php elseif( get_row_layout() == 'repeater_img' ): ?>  
             <section class="container-fluid home-main">
@@ -205,6 +205,11 @@
                   <?php if ( get_sub_field('lien_img') ) : $link = get_sub_field('lien_img'); ?>
                     <a class="home-sprite-link-img" href="<?php echo $link['url']; ?>"></a>
                   <?php endif; ?>
+                  <div class="container">
+                    <div class="home-img-sprite-link">
+                        <span class="btn-white anim-300"><?php _e('Découvrir','saint-honore'); ?></span>
+                    </div>
+                  </div>
               </div>
             </section>
 

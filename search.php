@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-	<main role="main">
+	<main role="main" class="tmplt-search">
 		<!-- section -->
       <section class="container-fluid banner-search-archive">
          <div class="container h-100">
@@ -23,17 +23,12 @@
       </section>
 		<section class="container-fluid">
          <div class="container">
-            <div class="row">
-               <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-                     <div id="<?php the_ID(); ?> one"  class="col-xl-4 col-lg-4 col-md-6 col-12 collection-product-col">
-                        <?php
-                        // $term = get_queried_object();
-                        // $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
-                        // $parent = get_term($term->parent, get_query_var('taxonomy') );
-   
-                        // $collection_name = $parent->name;
-                        
-                        ?>                     
+            <div class="row searching-row">
+               <?php 
+               $compt = 0;
+               if (have_posts()) : while (have_posts()) : the_post(); ?>
+                  <?php if (($compt < 4)) { ?>
+                     <div id="<?php the_ID(); ?> one" class="col-xl-4 col-lg-4 col-md-6 col-12 collection-product-col">                   
                         <article <?php post_class('post d-flex flex-column h-100'); ?>>
                            <?php echo get_the_post_thumbnail(); ?>
                            <div class="d-flex flex-column collection-product-content h-100">   
@@ -54,6 +49,50 @@
                            </div>
                         </article>
                      </div>
+                  <?php } elseif (($compt > 3 && $compt < 5)) { ?>
+                     <div class="col-xl-4 col-lg-4 col-md-6 col-12 col-search-infos">
+                        <article class="d-flex flex-column justify-content-between">
+                           <h3 class="text-white fs-32"><?php _e('Vous ne trouvez pas ? Ou n’avez pas le temps ?','saint-honore'); ?></h3>
+                           <div>
+                              <p class="fs-17 text-white"><?php _e('Nos spécialistes répondent à vos questions et sont là pour vous aider.','saint-honore'); ?></p>
+                              <div class="mt-40">
+                              <?php
+                              if (ICL_LANGUAGE_CODE == "fr") { ?>
+                                 <a class="btn-white" href="<?php echo home_url() . '/contact'; ?>"><?php _e('C\'est parti','saint-honore'); ?> !</a>
+                              <?php
+                              } elseif (ICL_LANGUAGE_CODE == "en") { ?>
+                                 <a class="btn-white" href="<?php echo site_url() . '/en/contact'; ?>"><?php _e('Let\'s go','saint-honore'); ?> !</a>
+                              <?php 
+                              }
+                              ?>
+                              </div>
+                           </div>
+                        </article>
+                     </div>
+                  <?php } elseif (($compt > 4 )) { ?>
+                     <div id="<?php the_ID(); ?> one"  class="col-xl-4 col-lg-4 col-md-6 col-12 collection-product-col">                   
+                        <article <?php post_class('post d-flex flex-column h-100'); ?>>
+                           <?php echo get_the_post_thumbnail(); ?>
+                           <div class="d-flex flex-column collection-product-content h-100">   
+                              <h3 class="fs-20 fw-600"><?php the_title(); ?></h3>
+                              <div>
+                                 <h4 class="text-grey fs-20 uppercase mb-0">
+                                    <?php
+                                    $post_tags = get_the_tags();
+                                    if ( $post_tags ) {
+                                       echo $post_tags[0]->name; 
+                                    }
+                                    ?>
+                                 </h4>
+                              </div>  
+                              <div class="text-grey fs-15 mt-20 lh-1-4 collection-product-description d-flex flex-column h-100 justify-content-end">
+                                 <?php the_content(); ?>
+                              </div>
+                           </div>
+                        </article>
+                     </div>
+                  <?php } ?>
+                  <?php $compt++; ?>
                   <?php endwhile; ?>
                <?php endif; ?>
             </div>

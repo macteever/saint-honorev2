@@ -9,16 +9,22 @@ get_header(); ?>
             <div class="row h-100 align-items-end">
                <div class="col-xl-5 col-lg-5 col-md-8 col-12 sub-cat-top-cube" style="background-color: <?php the_field('cube_color', $term); ?>;">
                   <h3 class="uppercase fs-16 text-white fw-300 text-right archive-subcat-title-after mb-40">
-                     <?php _e('collection','saint-honore'); ?>
                      <?php 
-
                      $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
                      $parent = get_term($term->parent, get_query_var('taxonomy') );
 
                      $collection_name = $parent->name;
                      $collection_link = get_term_link($parent, get_query_var( 'taxonomy' ) );
-                     echo $collection_name;
-
+                     ?>
+                     <?php
+                     if (ICL_LANGUAGE_CODE == "fr") { ?>
+                        <span>Collection <?php echo $collection_name; ?></span>
+                     <?php
+                     } elseif (ICL_LANGUAGE_CODE == "en") { ?>
+                        <span><?php echo $collection_name; ?> collection</span>
+                        <?php _e('collection','saint-honore'); ?>
+                     <?php 
+                     }
                      ?>
                   </h3>
                   <h1 class="text-white fs-32 fw-600 text-right mb-15"><?php echo $term->name ?></h1>
@@ -55,7 +61,15 @@ get_header(); ?>
                                     ?>
                                  </h4>
                                  <h4 class="text-grey fs-15 d-flex">
-                                    <?php echo 'Collection ' . $collection_name; ?>
+                                    <?php
+                                    if (ICL_LANGUAGE_CODE == "fr") { ?>
+                                       <?php echo 'Collection ' . $collection_name; ?>
+                                    <?php
+                                    } elseif (ICL_LANGUAGE_CODE == "en") { ?>
+                                       <?php echo $collection_name . 'collection'; ?>
+                                    <?php 
+                                    }
+                                    ?>
                                  </h4>
                               </div>  
                               <div class="text-grey fs-15 mt-20 lh-1-4 collection-product-description d-flex flex-column h-100 justify-content-end">
@@ -77,14 +91,12 @@ get_header(); ?>
       <div class="modal-background container-fluid">
          <div class="modal container p-relative">
             <button class="close-modal btn-black fs-15 anim-300"><?php _e('Fermer','saint-honore'); ?></button>
-            <div class="modal-child row p-relative">
-               
+            <div class="modal-child row justify-content-between p-relative">
+
             </div>
-            <!-- <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
-               <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
-            </svg> -->
          </div>
       </div>
    </div>
+   
 <!-- </div> -->
 <?php get_footer(); ?>

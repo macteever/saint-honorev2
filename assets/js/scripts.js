@@ -235,8 +235,8 @@
                     $('.nav-mobile li').removeClass('animation-fade-up');
                 }, 800);
             }
-        });
-
-		    
+		  });
+		  
+		 
 	});
 })(jQuery, this);

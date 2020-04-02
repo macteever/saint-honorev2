@@ -1,87 +1,76 @@
 <?php get_header(); ?>
-	<main role="main">
+	<main role="main" class="single-main">
 		<section class="container-fluid custom-post-single">
 		<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+			<?php 
+			// retrieve post_id, and sanitize it to enhance security
+			$post_id = intval($_POST['post_id'] );
+			//get term 
+			$ajax_term = get_the_terms($post_id, 'taxonomy-presentoirs');
+			//print_r($ajax_term);
+			?>
 			<!-- article -->
-			<article id="post-<?php the_ID(); ?>" <?php post_class('container'); ?>>
-				<div class="row">
-					<div class="col-xl-7 col-lg-7 col-12 single-real-slider">
-						<div class="slider-single-for mb-30">
-							<?php if ( have_rows('galerie_image') ) : ?>
-								<?php while( have_rows('galerie_image') ) : the_row();
+			<article id="post-<?php the_ID(); ?>" <?php post_class('container single-up anim-500'); ?>>
 
-									$image = get_sub_field('img');
-									if( !empty($image) ): ?>
-									<!-- <a href="<?php echo $image['url']; ?>"> -->
-										<img class="apparition-2" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
-									<!-- </a> -->
-									<?php endif; ?>
-								<?php endwhile; ?>
-							<?php endif; ?>
-						</div>
-						<div class="slider-single-nav">
-							<?php if ( have_rows('galerie_image') ) : ?>
-								<?php while( have_rows('galerie_image') ) : the_row();
-		
-								$image = get_sub_field('img');
-								if( !empty($image) ): ?>
-									<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+				<div class="row align-items-end p-relative">
+					<div id="saint-honore"></div>
+					<div class="col-xl-3 col-lg-4 col-md-4 col-12 d-flex flex-column collection-product-content h-100">
+						<h3 class="fs-20 fw-600"><?php the_title(); ?></h3>
+						<div>
+							<h4 class="text-grey fs-20 uppercase mb-0">
+								<?php
+								$post_tags = get_the_tags();
+								if ( $post_tags ) {
+									echo $post_tags[0]->name; 
+								}
+								?>
+							</h4>
+							<div class="d-flex align-items-end mt-10">
+								<?php if ( get_field('logo_collection', $ajax_term[0]) ) : ?>
+									<img class="logo-collection" src="<?php the_field('logo_collection', $ajax_term[0]); ?>" alt="logo collection saint-honoré paris">
 								<?php endif; ?>
-							
-								<?php endwhile; ?>
-							<?php endif; ?>
-						</div>
-					</div>
-					<div class="col-xl-5 col-lg-5 col-12">
-						<span class=""><a class="d-flex align-items-center text-darkgrey" href="<?php echo home_url() . '/realisations'; ?>"><i class="material-icons mr-15">chevron_left</i>portfolio</a></span>
-						<h1 class="fs-60 mt-15 mb-20 century-bold apparition-2"><?php the_title(); ?></h1>
-						<div class="apparition-2">
+								<h4 class="text-grey ml-10 fs-15 mb-0 d-flex">
+									<?php
+									if (ICL_LANGUAGE_CODE == "fr") { ?>
+										<?php echo 'Collection ' . $ajax_term[0]->name; ?>
+									<?php
+									} elseif (ICL_LANGUAGE_CODE == "en") { ?>
+										<?php echo $ajax_term[0]->name . ' ' . ' collection'; ?>
+									<?php 
+									}
+									?>
+								</h4>
+							</div>
+						</div>  
+						<div class="text-grey fs-15 mt-20 lh-1-4 collection-product-description d-flex flex-column h-100 justify-content-end">
 							<?php the_content(); ?>
 						</div>
-						<div class="mt-30 d-flex apparition-2">
-							<div>
-								<h3 class="fs-17 text-darkgrey century-bold">Client</h3>
-								<?php if ( have_rows('client') ) : ?>
-									<?php while( have_rows('client') ) : the_row(); ?>
-								
-									<span><?php the_sub_field('nom'); ?></span>
-									<?php if ( get_sub_field('logo') ) : $image = get_sub_field('logo'); ?>
-									
-										<img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>"/>
-									
-									<?php endif; ?>
-									
-									<?php endwhile; ?>
-								<?php endif; ?>
-							</div>
+					</div>
+					<div class="col-xl-7 col-lg-8 col-md-8 col-12 p-relative ajax-thumbnail">
+						<?php $thumbnail_url = get_the_post_thumbnail_url(); ?>
+						<img id="thumb" class="" src="<?php echo $thumbnail_url; ?>" alt="">
+						<div class="single-btn-back">
+							<!-- <?php
+							// $terms = wp_get_post_terms( $post->ID, 'taxonomy-presentoirs');
+							// foreach ($terms as $term) { ?>
+								<a class="btn-black-left" href="<?php // echo get_term_link( $term->slug, 'taxonomy-presentoirs'); ?>"><?php // _e('Retour','saint-honore') ?></a>
+							<!- <?php //	}	?> -->
+							<button class="btn-black-left anim-300" onclick="goBack()"><?php _e('Retour','saint-honore') ?></button>	
 						</div>
-						<div class="d-flex flex-column mt-15 apparition-2">
-							<h3 class="fs-17 text-darkgrey century-bold"><?php the_field('reference'); ?></h3>
-							<?php if ( have_rows('partenaires') ) : ?>
-								<?php while( have_rows('partenaires') ) : the_row(); ?>
-							
-								<p class="fs-15 mb-0"><?php the_sub_field('partner'); ?></p>
-							
-								<?php endwhile; ?>
-							<?php endif; ?>
-						</div>
-						<div class="d-flex flex-column mt-15 apparition-2">
-							<h3 class="fs-17 text-darkgrey century-bold">Date</h3>
-							<span><?php the_date('Y'); ?></span>
-						</div>
-						<div class="d-flex single-real-rs mt-15 apparition-2">
-							<a href="http://www.facebook.com/sharer.php?u=<?php the_permalink();?>&amp;t=<?php the_title(); ?>" title="Share this post on Facebook!" onclick="window.open(this.href); return false;"><img src="<?php echo get_template_directory_uri() . '/assets/img/facebook.png'; ?>" alt=""></a>
-							<a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo the_permalink(); ?>"><img src="<?php echo get_template_directory_uri() . '/assets/img/linkedin.png'; ?>" alt=""></a>
-							<a href="https://twitter.com/home?status=<?php echo get_permalink( get_the_ID() ); ?>" target="_blank"><img src="<?php echo get_template_directory_uri() . '/assets/img/twitter.png'; ?>"
-							</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xl-10 col-lg-10 col-12">
+						<div class="d-flex justify-content-end w-100 single-copyright">
+							<span class="text-grey fs-10">© Copyright <?php the_date('Y'); ?>. <?php _e('Modèle déposé, tous droits réservés','saint-honore'); ?></span>
 						</div>
 					</div>
 				</div>
 			</article>
 			<!-- /article -->
-		<?php endwhile; ?>
+			<?php endwhile; ?>
 
-		<?php else: ?>
+			<?php else: ?>
 			<!-- article -->
 			<article>
 				<h1><?php _e( 'Sorry, nothing to display.', 'html5blank' ); ?></h1>
@@ -90,5 +79,9 @@
 		<?php endif; ?>
 		</section>
 	</main>
-<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+	<script>
+	function goBack() {
+	window.history.back();
+	}
+	</script>
 <?php get_footer(); ?>

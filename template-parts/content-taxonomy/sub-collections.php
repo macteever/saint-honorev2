@@ -44,38 +44,52 @@ get_header(); ?>
          <div class="container">
             <div class="row">
                <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-                     <div id="<?php the_ID(); ?> one"  class="col-xl-4 col-lg-4 col-md-6 col-12 collection-product-col">
-                        <article <?php post_class('post d-flex flex-column h-100'); ?>>
-
-                           <?php echo get_the_post_thumbnail(); ?>
-                           <div class="d-flex flex-column collection-product-content h-100">   
-                              <h3 class="fs-20 fw-600"><?php the_title(); ?></h3>
-                              <div>
-                                 <h4 class="text-grey fs-20 uppercase mb-0">
-                                    <?php
-                                    $post_tags = get_the_tags();
-                                    if ( $post_tags ) {
-                                       echo $post_tags[0]->name; 
-                                    }
-                                    ?>
-                                 </h4>
-                                 <h4 class="text-grey fs-15 d-flex">
-                                    <?php
-                                    if (ICL_LANGUAGE_CODE == "fr") { ?>
-                                       <?php echo 'Collection ' . $collection_name; ?>
-                                    <?php
-                                    } elseif (ICL_LANGUAGE_CODE == "en") { ?>
-                                       <?php echo $collection_name . ' ' . ' collection'; ?>
-                                    <?php 
-                                    }
-                                    ?>
-                                 </h4>
-                              </div>  
-                              <div class="text-grey fs-15 mt-20 lh-1-4 collection-product-description d-flex flex-column h-100 justify-content-end">
-                                 <?php the_content(); ?>
+                     <div id="<?php the_ID(); ?> one" class="col-xl-4 col-lg-4 col-md-6 col-12 collection-product-col">
+                        <?php $single_permalink = get_permalink(); ?>
+                        <a href="<?php echo $single_permalink . '#saint-honore'; ?>">
+                           <article <?php post_class('post d-flex flex-column h-100'); ?>>
+                              <?php echo get_the_post_thumbnail(); ?>
+                              <div class="d-flex flex-column collection-product-content h-100">   
+                                 <h3 class="fs-20 fw-600"><?php the_title(); ?></h3>
+                                 <div>
+                                    <h4 class="text-grey fs-20 uppercase mb-0">
+                                       <?php
+                                       $post_tags = get_the_tags();
+                                       if ( $post_tags ) {
+                                          echo $post_tags[0]->name; 
+                                       }
+                                       ?>
+                                    </h4>
+                                    <div class="d-flex align-items-end mt-10">
+                                        <?php 
+                                       // retrieve post_id, and sanitize it to enhance security
+                                       $post_id = intval($_POST['post_id'] );
+                                       //get term 
+                                       $ajax_term = get_the_terms($post_id, 'taxonomy-presentoirs');
+                                       // print_r($ajax_term);
+                                       ?>
+                                       <?php if ( get_field('logo_collection', $ajax_term[0]) ) : ?>
+                                          <img class="logo-collection" src="<?php the_field('logo_collection', $ajax_term[0]); ?>" alt="logo collection saint-honoré paris">
+                                       <?php endif; ?>
+                                       <h4 class="text-grey ml-10 mb-0 fs-15 d-flex">
+                                          <?php
+                                          if (ICL_LANGUAGE_CODE == "fr") { ?>
+                                             <?php echo 'Collection ' . $collection_name; ?>
+                                          <?php
+                                          } elseif (ICL_LANGUAGE_CODE == "en") { ?>
+                                             <?php echo $collection_name . ' ' . ' collection'; ?>
+                                          <?php 
+                                          }
+                                          ?>
+                                       </h4>
+                                    </div>
+                                 </div>  
+                                 <div class="text-grey fs-15 mt-20 lh-1-4 collection-product-description d-flex flex-column h-100 justify-content-end">
+                                    <?php the_content(); ?>
+                                 </div>
                               </div>
-                           </div>
-                        </article>
+                           </article>
+                        </a>
                      </div>
                   <?php endwhile; ?>
                <?php endif; ?>

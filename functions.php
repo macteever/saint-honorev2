@@ -44,6 +44,10 @@ if (function_exists('add_theme_support'))
 	Functions
 \*------------------------------------*/
 
+// ADD IMAGE TO TAXONOMY 
+
+
+
 // GET PARENT/CHILD TAXONOMY 
 
 add_action( 'taxonomy_hierarchy_staff', 'taxonomy_hierarchy' );
@@ -232,7 +236,6 @@ function html5blank_styles()
 // Load HTML5 Blank conditional scripts
 function html5blank_conditional_scripts()
 {
- 
     if (is_page_template( array('templates/template-home.php') )){
         wp_register_script('home-script', get_template_directory_uri() . '/assets/js/home.js', array('jquery'), false, false); // Custom home script
         wp_enqueue_script('home-script'); // Enqueue it!        
@@ -249,15 +252,18 @@ function html5blank_conditional_scripts()
         wp_register_script('collections-script', get_template_directory_uri() . '/assets/js/collections.js', array('jquery'), false, false); // Custom collections script
         wp_enqueue_script('collections-script'); // Enqueue it!        
     }
-    if (is_tax( 'taxonomy-presentoirs') || is_tax( 'taxonomy-mannequins' ) || is_search( ) ){
+    if (is_singular( 'presentoirs' ) ){
         wp_register_script('zoom', get_template_directory_uri() . '/assets/js/jquery.zoom.min.js', array('jquery'), true, true); // Custom magnificent script
         wp_enqueue_script('zoom'); // Enqueue it!  
-
+        wp_register_script('single', get_template_directory_uri() . '/assets/js/single.js', array('jquery'), true, true); // Custom magnificent script
+        wp_enqueue_script('single'); // Enqueue it!  
+    }
+    if ( is_tax( 'taxonomy-mannequins' ) || is_tax( 'taxonomy-presentoirs' ) ){
         wp_register_script('taxonomy-script', get_template_directory_uri() . '/assets/js/taxonomy.js', array('jquery'), false, false); // Custom taxonomy script
         wp_enqueue_script('taxonomy-script'); // Enqueue it!  
 
         // pass Ajax Url to script.js
-	    wp_localize_script('taxonomy-script', 'ajaxurl', admin_url( 'admin-ajax.php' ) );      
+	    //wp_localize_script('taxonomy-script', 'ajaxurl', admin_url( 'admin-ajax.php' ) );      
     }
     
 }

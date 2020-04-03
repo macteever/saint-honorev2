@@ -25,23 +25,29 @@
 								}
 								?>
 							</h4>
-							<div class="d-flex align-items-end mt-10">
-								<?php if ( get_field('logo_collection', $ajax_term[0]) ) : ?>
-									<img class="logo-collection" src="<?php the_field('logo_collection', $ajax_term[0]); ?>" alt="logo collection saint-honoré paris">
-								<?php endif; ?>
-								<h4 class="text-grey ml-10 fs-15 mb-0 d-flex">
+							<?php
+							$terms = get_the_terms( get_the_ID(), 'taxonomy-presentoirs' );
+							foreach ( $terms as $term ){
+								if ( $term->parent == 0 ) { ?>
+								<div class="d-flex align-items-end mt-10">
+									<img class="logo-collection" src="<?php the_field('logo_collection', $term); ?>" alt="logo collection saint-honoré paris"> 
+									<h4 class="text-grey ml-10 mb-0 fs-15 d-flex">
 									<?php
 									if (ICL_LANGUAGE_CODE == "fr") { ?>
-										<?php echo 'Collection ' . $ajax_term[0]->name; ?>
+										<?php echo 'Collection ' . $term->name; ?>
 									<?php
 									} elseif (ICL_LANGUAGE_CODE == "en") { ?>
-										<?php echo $ajax_term[0]->name . ' ' . ' collection'; ?>
+										<?php echo $term->name . ' ' . ' collection'; ?>
 									<?php 
 									}
 									?>
-								</h4>
-							</div>
-						</div>  
+									</h4>
+								</div>
+								<?php
+								}
+							}
+							?>
+						</div> 
 						<div class="text-grey fs-15 mt-20 lh-1-4 collection-product-description d-flex flex-column h-100 justify-content-end">
 							<?php the_content(); ?>
 						</div>
